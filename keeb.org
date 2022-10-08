@@ -1,0 +1,94 @@
+First we define what we mean by single characters in our own format
+(char space+ definition newline). Do this in a code space.
+
+Then we define our keymaps in a nice grid using combinations of
+those single characters seperated by whitespace.
+
+Next we define our keyboard as a sequence of columns and rows
+or just all of the keys and define how they relate to the grid
+we used in our keymaps.
+
+Finally we write the firmware that runs on the keyboard. It should be
+specific to our keyboard. We are doing this "inside-out" as compared
+to most software these days -- We are writing the firmware ourselves
+using help from utility routines to make the code idiomatic. This is
+contrasted with the more common approach of providing a framework or
+library that you use by way of configuration.
+
+
+* Debouncing
+
+Simple de-bouncing (take last three and confirm they are all equal)
+
+The assumption is that the wait time between each period in
+history is long enough for debouncing. If it isn't then we can
+increase the maxlen of the history deque.
+
+#+begin_src python
+history = collections.Deque(maxlen=3)
+def debounce(keys):
+    history.append(keys)
+    return [a == b == c for a, b, c in zip(*history)]
+#+end_src
+
+
+
+#+begin_src python
+keys = bitstring()
+for w in writers:
+    w.value = True
+    for r in readers:
+        keys.append(r.value())
+    w.value = False
+
+# The keys that are currently on    
+on = debounce(keys)
+
+switched_off = last - on
+switched_on = on - last
+last = on
+
+#+end_src
+
+We make decisions as to what is happening based on discrete snapshots
+in time of the global state. It can be thought of as a matrix where
+the y axis is time and the x axis is the set of keys.
+
+.▪.▪...▪.....
+.▪....▪▪.....
+.▪....▪▪.....
+.▪....▪▪.....
+......▪......
+......▪......
+
+Then our job is just pattern matching over that matrix, finding the
+match with the highest priority.
+
+When we use a set of keys during that window we also take claim to
+them for that time period so other potential patterns don't match
+if they aren't supposed to.
+
+A combo is when two keys are pressed the same time. But we can be
+loose with our definition of "same time", so in we can allow the
+key-downs to start within 5 ticks and allow the key-ups to end at
+any time after that. And we can have different behaviors depending
+on which key-up event happens first.
+
+Actually if we transpose the matrix to be time on the x and keys on
+the y then I think we can use regexes really easily to do the
+matching, yes? Actually, since it's just boolean values it's now
+easy to use a bitstring for each key. If we store 64 values in our
+time window, then a single 64 bit word can be compared with another
+word. 64 events at 5ms per event is 320ms which I think is probably
+good enough.
+
+QMK uses 50ms as the default combo term, which would be 10 quanta in
+our system. For example if Key A starts at time 0 and Key B starts at
+time 8 and both of them are pressed for an additional 4 quanta then
+we will match this as a combo event for the two of them. To prevent
+further matches we mask out the two keys during this time period.
+
+
+
+
+
