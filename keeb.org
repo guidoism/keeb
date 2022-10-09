@@ -132,13 +132,13 @@ def key_press(key, context, action):
     Side-effects include clearing out this event from the context
     and firing the provided action.
 
-    >>> c = [bits('...▪▪.')]
+    >>> c = [bits('...▪▪.', '....▪.')]
     >>> c
-    [0, 0, 0, 1, 1, 0]
+    [[0, 0, 0, 1, 1, 0], [0, 0, 0, 0, 1, 0]]
     >>> key_press(0, c, lambda k: print(f'Pressed {k}'))
     Pressed 0
     >>> c
-    [0, 0, 0, 0, 0, 0]
+    [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0]]
     """
     pass
     
