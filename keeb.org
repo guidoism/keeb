@@ -48,6 +48,8 @@ switched_off = last - on
 switched_on = on - last
 last = on
 
+
+
 #+end_src
 
 We make decisions as to what is happening based on discrete snapshots
@@ -68,6 +70,13 @@ When we use a set of keys during that window we also take claim to
 them for that time period so other potential patterns don't match
 if they aren't supposed to.
 
+*** Normal Keypress
+
+A keypress is a sequence of ones followed by a zero.
+
+
+*** Combos
+
 A combo is when two keys are pressed the same time. But we can be
 loose with our definition of "same time", so in we can allow the
 key-downs to start within 5 ticks and allow the key-ups to end at
@@ -87,6 +96,53 @@ our system. For example if Key A starts at time 0 and Key B starts at
 time 8 and both of them are pressed for an additional 4 quanta then
 we will match this as a combo event for the two of them. To prevent
 further matches we mask out the two keys during this time period.
+
+We need to also decide whether to fire the key event when the match
+happens or whether we wait until one or both of the keys are lifted.
+
+High-level overview:
+
+1. Get the set of keys that have at least one down event recorded
+   (i.e., they aren't just zeros).
+
+2. Loop over each of the configured combos sorted in order of
+   most keys in the combo first.
+
+3. Determine if the keys overlap for the minimum amount. If the
+   minimum amount is 10 quanta then we want to make sure there is a
+   sequence of 10 on bits -- 11 1111 1111 (1024) -- in common. Can can
+   shift, mask, and AND to determine if this is true.
+
+4. TODO: Look for a series of ones in front of one of them that extends
+   for too long?
+
+* Utility Routines
+
+#+begin_src python
+def bits(bs):
+    """Converts the handy '▪.' bitstring format into a list of 0s and 1s.    
+    """
+    B = {'▪': 1, '.': 0}
+    return [B[b] for b in bs]
+
+
+def key_press(key, context, action):
+    """Returns True if the key in the context was pressed.
+
+    Side-effects include clearing out this event from the context
+    and firing the provided action.
+
+    >>> c = [bits('...▪▪.')]
+    >>> c
+    [0, 0, 0, 1, 1, 0]
+    >>> key_press(0, c, lambda k: print(f'Pressed {k}'))
+    Pressed 0
+    >>> c
+    [0, 0, 0, 0, 0, 0]
+    """
+    pass
+    
+#+end_src
 
 
 
