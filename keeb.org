@@ -141,6 +141,14 @@ def key_press(key, context, action):
     [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0]]
     """
     pass
+
+def key_down(key, context):
+    """Returns True if the key in the context is being current held down.
+
+    No side-effects.
+    """
+    pass
+
     
 #+end_src
 
