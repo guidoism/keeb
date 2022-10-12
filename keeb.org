@@ -135,8 +135,19 @@ z      KC_Z      KC.Z
 ↓    KC_DOWN
 ↑    KC_UP
 
-
-
+⓪   MO(0)
+①   MO(1)
+②   MO(2)
+③   MO(3)
+④   MO(4)
+⑤   MO(5)
+⑥   MO(6)
+⑦   MO(7)
+⑧   MO(8)
+⑨   MO(9)
+⑩   MO(10)
+⑪   MO(11)
+⑫   MO(12)
 
 #+end_example
 
