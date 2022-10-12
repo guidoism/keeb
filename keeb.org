@@ -15,6 +15,113 @@ using help from utility routines to make the code idiomatic. This is
 contrasted with the more common approach of providing a framework or
 library that you use by way of configuration.
 
+* Single-character definitions
+
+
+https://www.emacswiki.org/emacs/TabStopList
+
+#+begin_example
+char   qmk       kmk      zmk
+␣      KC_SPC    KC.SPC   ?
+!      KC_EXLM   KC.EXLM  ?
+"      KC_DQUO   KC.DQUO  ?
+#      
+$      KC_DLR    KC.DLR   ?
+%      KC_PERC   KC.PERC  ?
+&      KC_AMPR   KC.AMPR  ?
+'      
+(      KC_LPRN   KC.LPRN  ?
+)      KC_RPRN   KC.RPRN  ?
+*      KC_ASTR   KC.ASTR  ?
++      KC_PLUS   KC.PLUS  ?
+,      
+-      
+.      
+/      
+0      
+1      
+2      
+3      
+4      
+5      
+6      
+7      
+8      
+9      
+:      KC_COLN   KC.COLN  ?
+;      
+<      KC_LT     KC.LT    ?
+=      
+>      KC_GT     KC.GT    ?
+?      KC_QUES   KC.QUES  ?
+@      KC_AT     KC.AT
+A      S(A)      KC.LSFT(A) 
+B      S(B)      KC.LSFT(B)
+C      S(C)      KC.LSFT(C)
+D      S(D)      KC.LSFT(D)
+E      S(E)      KC.LSFT(E)
+F      S(F)      KC.LSFT(F)
+G      S(G)      KC.LSFT(G)
+H      S(H)      KC.LSFT(H)
+I      S(I)      KC.LSFT(I)
+J      S(J)      KC.LSFT(J)
+K      S(K)      KC.LSFT(K)
+L      S(L)      KC.LSFT(L)
+M      S(M)      KC.LSFT(M)
+N      S(N)      KC.LSFT(N)
+O      S(O)      KC.LSFT(O)
+P      S(P)      KC.LSFT(P)
+Q      S(Q)      KC.LSFT(Q)
+R      S(R)      KC.LSFT(R)
+S      S(S)      KC.LSFT(S)
+T      S(T)      KC.LSFT(T)
+U      S(U)      KC.LSFT(U)
+V      S(V)      KC.LSFT(V)
+W      S(W)      KC.LSFT(W)
+X      S(X)      KC.LSFT(X)
+Y      S(Y)      KC.LSFT(Y)
+Z      S(Z)      KC.LSFT(Z)
+[      KC_LBRC   KC.LBRC
+\      KC_BSLS   KC.BSLS
+]      KC_RBRC   KC.RBRC
+^      KC_CIRC   KC.CIRC
+_      KC_UNDS   KC.UNDS
+`      KC_GRV    KC.GRV
+a      KC_A      KC.A
+b      KC_B      KC.B
+c      KC_C      KC.C
+d      KC_D      KC.D
+e      KC_E      KC.E
+f      KC_F      KC.F
+g      KC_G      KC.G
+h      KC_H      KC.H
+i      KC_I      KC.I
+j      KC_J      KC.J
+k      KC_K      KC.K
+l      KC_L      KC.L
+m      KC_M      KC.M
+n      KC_N      KC.N
+o      KC_O      KC.O
+p      KC_P      KC.P
+q      KC_Q      KC.Q
+r      KC_R      KC.R
+s      KC_S      KC.S
+t      KC_T      KC.T
+u      KC_U      KC.U
+v      KC_V      KC.V
+w      KC_W      KC.W
+x      KC_X      KC.X
+y      KC_Y      KC.Y
+z      KC_Z      KC.Z
+{      KC_LCBR   KC.LCBR
+|      KC_PIPE   KC.PIPE
+}      KC_RCBR   KC.RCBR
+~      
+#+end_example
+
+
+* Keymaps
+
 
 * Debouncing
 
