@@ -25,33 +25,33 @@ char   qmk       kmk      zmk
 ␣      KC_SPC    KC.SPC   ?
 !      KC_EXLM   KC.EXLM  ?
 "      KC_DQUO   KC.DQUO  ?
-#      
+#      KC_HASH   KC.HASH
 $      KC_DLR    KC.DLR   ?
 %      KC_PERC   KC.PERC  ?
 &      KC_AMPR   KC.AMPR  ?
-'      
+'      KC_QUOT   KC.QUOT
 (      KC_LPRN   KC.LPRN  ?
 )      KC_RPRN   KC.RPRN  ?
 *      KC_ASTR   KC.ASTR  ?
 +      KC_PLUS   KC.PLUS  ?
-,      
--      
-.      
-/      
-0      
-1      
-2      
-3      
-4      
-5      
-6      
-7      
-8      
-9      
+,      KC_COMMA  KC.COMMA
+-      KC_MINUS  KC.MINUS
+.      KC_DOT    KC.DOT
+/      KC_SLASH  KC.SLASH
+0      KC_0      KC.N0
+1      KC_1      KC.N1
+2      KC_2      KC.N2
+3      KC_3      KC.N3
+4      KC_4      KC.N4
+5      KC_5      KC.N5
+6      KC_6      KC.N6
+7      KC_7      KC.N7
+8      KC_8      KC.N8
+9      KC_9      KC.N9
 :      KC_COLN   KC.COLN  ?
-;      
+;      KC_SCLN   KC.SCLN
 <      KC_LT     KC.LT    ?
-=      
+=      KC_EQL    KC.EQL
 >      KC_GT     KC.GT    ?
 ?      KC_QUES   KC.QUES  ?
 @      KC_AT     KC.AT
@@ -116,7 +116,7 @@ z      KC_Z      KC.Z
 {      KC_LCBR   KC.LCBR
 |      KC_PIPE   KC.PIPE
 }      KC_RCBR   KC.RCBR
-~      
+~      KC_TILDE  KC.TILDE
 #+end_example
 
 
