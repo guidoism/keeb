@@ -117,6 +117,27 @@ z      KC_Z      KC.Z
 |      KC_PIPE   KC.PIPE
 }      KC_RCBR   KC.RCBR
 ~      KC_TILDE  KC.TILDE
+
+⌃       KC_LCTL
+⇧       KC_LSFT
+⌥      KC_LOPT
+⌘      KC_LCMD
+
+↵       KC_ENT
+⎋      KC_ESC
+⌫      KC_BSPC
+⇥       KC_TAB
+
+⇞    KC_PGUP
+⇟    KC_PGDN
+←    KC_RIGHT
+→    KC_LEFT
+↓    KC_DOWN
+↑    KC_UP
+
+
+
+
 #+end_example
 
 
