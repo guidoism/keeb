@@ -456,7 +456,7 @@ return [layer(l) for l in src.split('\n\n')]
 
 
 
-* Keyboard definition (no keymap)
+* KMK Keyboard definition (no keymap)
 
 #+name: kb.py
 #+begin_src python :tangle output/kb.py
