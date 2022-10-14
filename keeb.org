@@ -1,7 +1,7 @@
 First we define what we mean by single characters in our own format
 (char space+ definition newline). Do this in a code space.
 
-Then we define our keymaps in a nice grid using combinations of
+then we define our keymaps in a nice grid using combinations of
 those single characters seperated by whitespace.
 
 Next we define our keyboard as a sequence of columns and rows
@@ -223,27 +223,27 @@ M3  ESC  OPT  CMD   M1   ␣    ␣    M2   ◌    ◌    ⍉a    ◌
 ~    !    @    #    $    %    ^    &    *    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    _    +    "    '    |
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 `    1    2    3    4    5    6    7    8    9    0    BS
 ◌    [    ]    (    )    ◌    ◌    -    =    ◌    ◌    \
 ◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
-◌    ◌    ◌    ◌    M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    7    8    9    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    4    5    6    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    0    1    2    3    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 #+end_example
 
 It's a pain in the ass to change a keymap all at once so I'm going to
