@@ -26,6 +26,8 @@ starting the process of keyboard upload and actually doing the copy.
 
 ** Getting the stuff onto the board
 
+- [ ] Confirm that keyboard file is valid before copying over
+
 #+begin_src sh
 sleep 2
 cp output/*.py /Volumes/KEEB-1/
@@ -218,7 +220,7 @@ F12    KC_F12    KC.F12
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
 ⌃    a    s    d    f    g    h    j    k    l    :    RET
 ⇧    z    x    c    v    b    n    m    ,    .    /    ;
-M3  ESC  OPT  CMD   M1   ␣    ␣    M2   ◌    ◌    ⍉a    ◌
+M3  ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    &    *    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    _    +    "    '    |
@@ -481,7 +483,7 @@ for s in conversion_in.split('\n')[1:]:
         k, *vals = re.findall(r'\S+', s)
         conversion[k] = vals[1]
 
-key = lambda k: 'D(KC.Q)' if k[0] == '⍉' else conversion[k]
+key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
 #key = lambda k: conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
@@ -502,42 +504,42 @@ return '\n'.join([pretty(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 KC.TAB, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.BSPC,
 KC.LCTL, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, KC.COLN, KC.ENT,
 KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.SCLN,
-KC.MO(3), KC.ESC, KC.LOPT, KC.LCMD, KC.MO(1), KC.SPC, KC.SPC, KC.MO(2), KC.NO, KC.NO, D(KC.Q), KC.NO,
+KC.MO(3), KC.ESC, KC.LOPT, KC.LCMD, KC.MO(1), KC.SPC, KC.SPC, KC.MO(2), KC.NO, KC.NO, D(KC.A), KC.NO,
 ],
 [
 # Layer 1
 KC.TILDE, KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.AMPR, KC.PAST, KC.NO, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.UNDS, KC.PLUS, KC.DQUO, KC.QUOT, KC.PIPE,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 2
 KC.GRV, KC.N1, KC.N2, KC.N3, KC.N4, KC.N5, KC.N6, KC.N7, KC.N8, KC.N9, KC.N0, KC.BSPC,
 KC.NO, KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO, KC.BSLS,
 KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 3
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 4
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.N7, KC.N8, KC.N9, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.N4, KC.N5, KC.N6, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.N0, KC.N1, KC.N2, KC.N3, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 5
 KC.NO, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 #+end_example
 
