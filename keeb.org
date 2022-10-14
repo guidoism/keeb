@@ -15,6 +15,11 @@ using help from utility routines to make the code idiomatic. This is
 contrasted with the more common approach of providing a framework or
 library that you use by way of configuration.
 
+* How to use
+
+Run M-x org-babel-tangle
+
+
 * Single-character definitions
 
 
