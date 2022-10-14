@@ -176,6 +176,17 @@ M7   MO(7)   KC.MO(7)
 M8   MO(8)   KC.MO(8)
 M9   MO(9)   KC.MO(9)
 
+F1     KC_F1     KC.F1
+F2     KC_F2     KC.F2
+F3     KC_F3     KC.F3
+F4     KC_F4     KC.F4
+F5     KC_F5     KC.F5
+F6     KC_F6     KC.F6
+F7     KC_F7     KC.F7
+F8     KC_F8     KC.F8
+F9     KC_F9     KC.F9
+F10    KC_F10    KC.F10
+
 
 #+end_example
 
@@ -453,6 +464,8 @@ layer = lambda l: [key(k) for k in l.split()]
 
 return [layer(l) for l in src.split('\n\n')]
 #+end_src
+
+#+RESULTS: generate_kmk_keymap
 
 
 
