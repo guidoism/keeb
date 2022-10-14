@@ -20,6 +20,7 @@ library that you use by way of configuration.
 
 https://www.emacswiki.org/emacs/TabStopList
 
+#+name: conversion
 #+begin_example
 char   qmk       kmk      zmk
 ␣      KC_SPC    KC.SPC   ?
@@ -32,7 +33,7 @@ $      KC_DLR    KC.DLR   ?
 '      KC_QUOT   KC.QUOT
 (      KC_LPRN   KC.LPRN  ?
 )      KC_RPRN   KC.RPRN  ?
-*      KC_ASTR   KC.ASTR  ?
+ *     KC_PAST   KC.PAST
 +      KC_PLUS   KC.PLUS  ?
 ,      KC_COMMA  KC.COMMA
 -      KC_MINUS  KC.MINUS
@@ -118,41 +119,180 @@ z      KC_Z      KC.Z
 }      KC_RCBR   KC.RCBR
 ~      KC_TILDE  KC.TILDE
 
-⌃       KC_LCTL
-⇧       KC_LSFT
-⌥      KC_LOPT
-⌘      KC_LCMD
+◌      KC_NO     KC.NO
 
-↵       KC_ENT
-⎋      KC_ESC
-⌫      KC_BSPC
-⇥       KC_TAB
+⌃       KC_LCTL   KC.LCTL
+⇧       KC_LSFT   KC.LSFT
+⌥      KC_LOPT   KC.LOPT
+OPT     KC_LOPT   KC.LOPT
+⌘       KC_LCMD   KC.LCMD
+CMD     KC_LCMD   KC.LCMD
 
-⇞    KC_PGUP
-⇟    KC_PGDN
-←    KC_RIGHT
-→    KC_LEFT
-↓    KC_DOWN
-↑    KC_UP
+⇪      CAPS_WORD   CAPS_WORD   
+CAPS   CAPS_WORD   CAPS_WORD   
 
-⓪   MO(0)
-①   MO(1)
-②   MO(2)
-③   MO(3)
-④   MO(4)
-⑤   MO(5)
-⑥   MO(6)
-⑦   MO(7)
-⑧   MO(8)
-⑨   MO(9)
-⑩   MO(10)
-⑪   MO(11)
-⑫   MO(12)
+↵       KC_ENT   KC.ENT
+RET     KC_ENT   KC.ENT
+⎋      KC_ESC   KC.ESC
+ESC     KC_ESC   KC.ESC
+⌫      KC_BSPC   KC.BSPC
+BS      KC_BSPC   KC.BSPC
+⇥       KC_TAB   KC.TAB
+
+HME  KC_HOME   KC.HOME
+END  KC_END   KC.END
+P↑   KC_PGUP   KC.PGUP
+P↓   KC_PGDN   KC.PGDN
+←    KC_RIGHT   KC.RIGHT
+→    KC_LEFT   KC.LEFT
+↓    KC_DOWN   KC.DOWN
+↑    KC_UP   KC.UP
+
+
+M₀   MO(0)   KC.MO(0)
+M₁   MO(1)   KC.MO(1)
+M₂   MO(2)   KC.MO(2)
+M₃   MO(3)   KC.MO(3)
+M₄   MO(4)   KC.MO(4)
+M₅   MO(5)   KC.MO(5)
+M₆   MO(6)   KC.MO(6)
+M₇   MO(7)   KC.MO(7)
+M₈   MO(8)   KC.MO(8)
+M₉   MO(9)   KC.MO(9)
+
+M0   MO(0)   KC.MO(0)
+M1   MO(1)   KC.MO(1)
+M2   MO(2)   KC.MO(2)
+M3   MO(3)   KC.MO(3)
+M4   MO(4)   KC.MO(4)
+M5   MO(5)   KC.MO(5)
+M6   MO(6)   KC.MO(6)
+M7   MO(7)   KC.MO(7)
+M8   MO(8)   KC.MO(8)
+M9   MO(9)   KC.MO(9)
+
 
 #+end_example
 
 
+
+
 * Keymaps
+
+#+name: planck_20221012
+#+begin_example
+⇥    q    w    e    r    t    y    u    i    o    p    BS
+⌃    a    s    d    f    g    h    j    k    l    :    RET
+⇧    z    x    c    v    b    n    m    ,    .    /    ;
+M3  ESC  OPT  CMD   M1   ␣    ␣    M2   ◌    ◌    ◌    ◌
+
+~    !    @    #    $    %    ^    &    *    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    _    +    "    '    |
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+`    1    2    3    4    5    6    7    8    9    0    BS
+◌    [    ]    (    )    ◌    ◌    -    =    ◌    ◌    \
+◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌    ◌    ◌    M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    7    8    9    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    4    5    6    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    0    1    2    3    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+#+end_example
+
+It's a pain in the ass to change a keymap all at once so I'm going to
+attempt to do it a bit at a time. My strategy will be something like
+this:
+
+- [X] Move 0 in the numpad layer off of the mod row in anticipation of losing those keys
+- [ ] Move the movement layer to the left space button, need to still consider that we use
+      that to get to the numpad row so keep it working like before too
+- [ ] Make a beep when I use the palm key for movement
+- [ ] Since there's not much in the current symbol layer, move as many symbols as possible
+      to the numpad layer and move the numpad layer over to M1. We will need to relocate:
+      &    *    _    +    "
+      And we might as well move those over to the symbol layer as soon as possible
+      
+At this point what we end up with is _ still being symmetrical with - but it's LWR-F
+instead of LWR-J and in some ways this maintains the symmetry in that both keys use
+the home index key above the layer key.
+
+The two quotes are also symmetrical in that the single quote uses the right pinky
+and the double uses the right pinky on the same layer.
+
+We add another period to the numpad layer so we can do a single roll of N-B to do '0.'
+
+#+name: planck (mark ii)
+#+begin_src keymap
+⇥    q    w    e    r    t    y    u    i    o    p    BS
+⌃    a    s    d    f    g    h    j    k    l    :    RET
+⇧    z    x    c    v    b    n    m    ,    .    /    ;
+M3  ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
+
+~    !    @    #    $    %    ^    7    8    9    ◌    ◌
+◌    "    &    *    _    ◌    +    4    5    6    '    |
+◌    ◌    ◌    ◌    ◌    .    0    1    2    3    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+`    1    2    3    4    5    6    7    8    9    0    BS
+◌    [    ]    (    )    ◌    ◌    -    =    ◌    ◌    \
+◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌    ◌    ◌    M1   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+#+end_src
+
+- [ ] At this point we pretty much never use the number row on M2 so we migth as well remove
+      those numbers. The right thumb now is pretty much only used for the symmetrical brackets
+      and the:  -   =   \
+
+#+name: planck (mark iii)
+#+begin_example
+⇥    q    w    e    r    t    y    u    i    o    p    BS
+⌃    a    s    d    f    g    h    j    k    l    :    RET
+⇧    z    x    c    v    b    n    m    ,    .    /    ;
+M3  ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
+
+~    !    @    #    $    %    ^    7    8    9    ◌    ◌
+◌    "    &    *    _    ◌    +    4    5    6    '    |
+◌    ◌    ◌    ◌    ◌    .    0    1    2    3    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+`    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    BS
+◌    [    ]    (    )    ◌    ◌    -    =    ◌    ◌    \
+◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌    ◌    ◌    M1   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+#+end_example
 
 
 * Debouncing
@@ -255,6 +395,7 @@ High-level overview:
 4. TODO: Look for a series of ones in front of one of them that extends
    for too long?
 
+
 * Utility Routines
 
 #+begin_src python
@@ -288,10 +429,23 @@ def key_down(key, context):
     """
     pass
 
-    
 #+end_src
 
 
+* Generate KMK firmware
 
+#+name: generate_kmk
+#+begin_src python :var src=planck_20221012 :var conversion_in=conversion :results pp
+import re, json
+conversion = {}
+for s in conversion_in.split('\n')[1:]:
+    if s:
+        k, *vals = re.findall(r'\S+', s)
+        conversion[k] = vals[1]
 
+key = lambda k: conversion.get(k, f'GUIDOFART: {k}')
+layer = lambda l: [key(k) for k in l.split()]
+
+return [layer(l) for l in src.split('\n\n')]
+#+end_src
 
