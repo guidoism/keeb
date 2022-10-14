@@ -448,7 +448,7 @@ for s in conversion_in.split('\n')[1:]:
         k, *vals = re.findall(r'\S+', s)
         conversion[k] = vals[1]
 
-key = lambda k: conversion.get(k, f'GUIDOFART: {k}')
+key = lambda k: conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
 return [layer(l) for l in src.split('\n\n')]
