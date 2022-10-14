@@ -576,7 +576,7 @@ from kmk.modules.layers import Layers
 D = lambda k: simple_key_sequence((k, KC.F12))
 
 keyboard = KMKKeyboard()
-keyboard.debug_enabled = True
+keyboard.debug_enabled = False
 keyboard.modules.append(Layers())
 keyboard.keymap = [
     <<generate_kmk_keymap()>>
