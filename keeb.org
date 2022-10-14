@@ -17,7 +17,23 @@ library that you use by way of configuration.
 
 * How to use
 
-Run M-x org-babel-tangle
+Run M-x org-babel-tangle to generate the =main.py= and =kb.py= files.
+
+We will also need to copy those files to the keyboard. Because circuit
+python will reload stuff immediately it's best to not be in the middle
+of a keystroke while this is happening so we put a delay between
+starting the process of keyboard upload and actually doing the copy.
+
+** Getting the stuff onto the board
+
+#+begin_src sh
+sleep 2
+cp output/*.py /Volumes/KEEB-1/
+echo "Done"
+#+end_src
+
+#+RESULTS:
+: Done
 
 
 * Single-character definitions
@@ -56,9 +72,9 @@ $      KC_DLR    KC.DLR   ?
 9      KC_9      KC.N9
 :      KC_COLN   KC.COLN  ?
 ;      KC_SCLN   KC.SCLN
-<      KC_LT     KC.LT    ?
+<      KC_LT     KC.LABK    ?
 =      KC_EQL    KC.EQL
->      KC_GT     KC.GT    ?
+>      KC_GT     KC.RABK    ?
 ?      KC_QUES   KC.QUES  ?
 @      KC_AT     KC.AT
 A      S(A)      KC.LSFT(A) 
@@ -451,7 +467,11 @@ def key_down(key, context):
 * Generate KMK firmware keymap list
 
 #+name: generate_kmk_keymap
-#+begin_src python :var src=planck_20221012 :var conversion_in=conversion :results pp
+#+begin_src python :var src=planck_20221012 :var conversion_in=conversion :results value
+def chunk(iterable, n):
+    args = [iter(iterable)] * n
+    return zip(*args)
+
 import re, json
 conversion = {}
 for s in conversion_in.split('\n')[1:]:
@@ -462,11 +482,15 @@ for s in conversion_in.split('\n')[1:]:
 key = lambda k: conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
-return [layer(l) for l in src.split('\n\n')]
+def pretty(i, layer):
+    s = ['[', f'# Layer {i}']
+    for row in chunk(layer, 12):
+        s.append(', '.join(row) + ',')
+    s.append('],')
+    return '\n'.join(s)
+
+return '\n'.join([pretty(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 #+end_src
-
-#+RESULTS: generate_kmk_keymap
-
 
 
 * KMK Keyboard definition (no keymap)
@@ -501,8 +525,12 @@ from kmk.modules.layers import Layers
 keyboard = KMKKeyboard()
 keyboard.debug_enabled = True
 keyboard.modules.append(Layers())
-keyboard.keymap = <<generate_kmk_keymap()>>
+keyboard.keymap = [
+    <<generate_kmk_keymap()>>
+]
 
 if __name__ == '__main__':
     keyboard.go()
 #+end_src
+
+
