@@ -220,10 +220,10 @@ F12    KC_F12    KC.F12
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
 ⌃    a    s    d    f    g    h    j    k    l    :    RET
 ⇧    z    x    c    v    b    n    m    ,    .    /    ;
-M3  ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
+M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    &    *    ◌    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    _    +    "    '    |
+◌    "    &    *    _    ◌    ◌    _    +    "    '    |
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
@@ -232,20 +232,26 @@ M3  ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
 ◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ⍉↑   P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ⍉←   ⍉↓   ⍉→    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-◌    ◌    ◌    ◌    ◌    ◌    ◌    7    8    9    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    4    5    6    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    0    1    2    3    ◌    ◌
+~    !    @    #    $    %    ^    7    8    9    ◌    ◌
+◌    "    &    *    _    ◌    +    4    5    6    '    |
+◌    ◌    ◌    ◌    ◌    .    0    1    2    3    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
 #+end_example
 
 It's a pain in the ass to change a keymap all at once so I'm going to
@@ -253,7 +259,7 @@ attempt to do it a bit at a time. My strategy will be something like
 this:
 
 - [X] Move 0 in the numpad layer off of the mod row in anticipation of losing those keys
-- [ ] Move the movement layer to the left space button, need to still consider that we use
+- [X] Move the movement layer to the left space button, need to still consider that we use
       that to get to the numpad row so keep it working like before too
 - [ ] Make a beep when I use the palm key for movement
 - [ ] Since there's not much in the current symbol layer, move as many symbols as possible
