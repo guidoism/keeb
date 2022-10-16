@@ -1,3 +1,4 @@
+
 First we define what we mean by single characters in our own format
 (char space+ definition newline). Do this in a code space.
 
@@ -223,7 +224,40 @@ F12    KC_F12    KC.F12
 M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    &    *    ◌    ◌    ◌
-◌    "    &    *    _    ◌    ◌    _    +    "    '    |
+◌    ◌    ◌    ◌    ◌    ◌    ◌    _    +    "    '    |
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+`    1    2    3    4    5    6    7    8    9    0    BS
+◌    [    ]    (    )    ◌    ◌    -    =    ◌    ◌    \
+◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑   P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    7    8    9    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    4    5    6    ◌    ◌
+◌    ◌    ◌    ◌    ◌    .    0    1    2    3    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+#+end_example
+
+#+name: planck_20221014
+#+begin_example
+⇥    q    w    e    r    t    y    u    i    o    p    BS
+⌃    a    s    d    f    g    h    j    k    l    :    RET
+⇧    z    x    c    v    b    n    m    ,    .    /    ;
+M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
+
+~    !    @    #    $    %    ^   ⍉&   ⍉*    ◌    ◌    ◌
+◌    "    &    *    _    ◌    +   ⍉_   ⍉+   ⍉"    '    |
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
@@ -233,13 +267,13 @@ M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ⍉↑   P↓   ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ⍉←   ⍉↓   ⍉→    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ⍉←   ⍉↓   ⍉→   ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    7    8    9    ◌    ◌
 ◌    "    &    *    _    ◌    +    4    5    6    '    |
-◌    ◌    ◌    ◌    ◌    .    0    1    2    3    ◌    ◌
+◌    ◌    ◌    ◌    ◌    .    0    1    2    3    /    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
@@ -251,8 +285,9 @@ M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
-
 #+end_example
+
+
 
 It's a pain in the ass to change a keymap all at once so I'm going to
 attempt to do it a bit at a time. My strategy will be something like
@@ -477,7 +512,7 @@ def key_down(key, context):
 * Generate KMK firmware keymap list
 
 #+name: generate_kmk_keymap
-#+begin_src python :var src=planck_20221012 :var conversion_in=conversion :results value
+#+begin_src python :var src=planck_20221014 :var conversion_in=conversion :results value
 def chunk(iterable, n):
     args = [iter(iterable)] * n
     return zip(*args)
