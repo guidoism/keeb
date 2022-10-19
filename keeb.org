@@ -314,12 +314,18 @@ layer button and the moved symbols we can turn off the
 old stuff and go ahead and remove the old numbers from
 the old number layer.
 
-#+name: planck_202210
+- [ ] Move num layer to LWR
+- [ ] Put shift on thumb
+- [ ] Move ESC to another layer
+- [ ] There should be a paste button on the move layer (C-y)
+- [ ] Searching is part of moving in emacs and should be on move layer
+
+#+name: planck_202218
 #+begin_example
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
 ⌃    a    s    d    f    g    h    j    k    l    :    RET
 ⇧    z    x    c    v    b    n    m    ,    .    /    ;
-M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
+M3  ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    ◌    ◌    ◌    ◌    ◌
 ◌    "    &    *    _    ◌    +    ◌    ◌    ◌    '    |
@@ -331,9 +337,9 @@ M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 ◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    7    8    9    ◌    ◌
@@ -346,13 +352,14 @@ M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
-◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
 #+end_example
 
-
+*** Old fork not sure about
 #+name: planck (mark ii)
 #+begin_src keymap
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
