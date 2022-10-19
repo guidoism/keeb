@@ -249,6 +249,28 @@ M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 #+end_example
 
+It's a pain in the ass to change a keymap all at once so I'm going to
+attempt to do it a bit at a time. My strategy will be something like
+this:
+
+- [X] Move 0 in the numpad layer off of the mod row in anticipation of losing those keys
+- [X] Move the movement layer to the left space button, need to still consider that we use
+      that to get to the numpad row so keep it working like before too
+- [X] Make a beep when I use the palm key for movement
+- [X] Since there's not much in the current symbol layer, move as many symbols as possible
+      to the numpad layer and move the numpad layer over to M1. We will need to relocate:
+      &    *    _    +    "
+      And we might as well move those over to the symbol layer as soon as possible
+      
+At this point what we end up with is _ still being symmetrical with - but it's LWR-F
+instead of LWR-J and in some ways this maintains the symmetry in that both keys use
+the home index key above the layer key.
+
+The two quotes are also symmetrical in that the single quote uses the right pinky
+and the double uses the right pinky on the same layer.
+
+We add another period to the numpad layer so we can do a single roll of N-B to do '0.'
+
 #+name: planck_20221014
 #+begin_example
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
@@ -287,29 +309,49 @@ M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 #+end_example
 
+Now that we've somwhat gotten used to the new movement
+layer button and the moved symbols we can turn off the
+old stuff and go ahead and remove the old numbers from
+the old number layer.
 
+#+name: planck_202210
+#+begin_example
+⇥    q    w    e    r    t    y    u    i    o    p    BS
+⌃    a    s    d    f    g    h    j    k    l    :    RET
+⇧    z    x    c    v    b    n    m    ,    .    /    ;
+M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
 
-It's a pain in the ass to change a keymap all at once so I'm going to
-attempt to do it a bit at a time. My strategy will be something like
-this:
+~    !    @    #    $    %    ^    ◌    ◌    ◌    ◌    ◌
+◌    "    &    *    _    ◌    +    ◌    ◌    ◌    '    |
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-- [X] Move 0 in the numpad layer off of the mod row in anticipation of losing those keys
-- [X] Move the movement layer to the left space button, need to still consider that we use
-      that to get to the numpad row so keep it working like before too
-- [ ] Make a beep when I use the palm key for movement
-- [ ] Since there's not much in the current symbol layer, move as many symbols as possible
-      to the numpad layer and move the numpad layer over to M1. We will need to relocate:
-      &    *    _    +    "
-      And we might as well move those over to the symbol layer as soon as possible
-      
-At this point what we end up with is _ still being symmetrical with - but it's LWR-F
-instead of LWR-J and in some ways this maintains the symmetry in that both keys use
-the home index key above the layer key.
+`    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    BS
+◌    [    ]    (    )    ◌    ◌    -    =    ◌    ◌    \
+◌    <    >    {    }    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-The two quotes are also symmetrical in that the single quote uses the right pinky
-and the double uses the right pinky on the same layer.
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 
-We add another period to the numpad layer so we can do a single roll of N-B to do '0.'
+~    !    @    #    $    %    ^    7    8    9    ◌    ◌
+◌    "    &    *    _    ◌    +    4    5    6    '    |
+◌    ◌    ◌    ◌    ◌    .    0    1    2    3    /    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    F1   F2   F3   F4   F5   F6   F7   F8   F9  F10   ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+◌    ◌   OPT  CMD   ◌    ◌    ◌    ◌    ◌    ◌    ◌    ◌
+
+◌    ◌    ◌    ◌    ◌    ◌    ◌    P↑   ↑    P↓   ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌    ←    ↓    →    ◌    ◌
+◌    ◌    ◌    ◌    ◌    ◌    ◌   HME   ◌   END   ◌    ◌
+◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
+#+end_example
+
 
 #+name: planck (mark ii)
 #+begin_src keymap
@@ -626,5 +668,59 @@ keyboard.keymap = [
 if __name__ == '__main__':
     keyboard.go()
 #+end_src
+
+
+
+
+* Formal definitions and finite automata
+
+** Keypress
+
+Actions:
+- Press A
+
+States:
+
+1. Press
+2. Release
+
+** Momentary Layer
+
+This is essentially the way shift works. We have two buttons, 'a' and
+'shift'.
+
+key-press a
+key-release a
+event 'a'
+
+key-press shift
+key-press a
+key-release a
+event 'A'
+key-release shift
+
+key-press shift
+key-release shift
+key-press a
+key-release a
+event 'a'
+
+The latter is what happens during a normal shift operation but we can
+subtly tweak this sequence to improve our typing experience. For
+example we can fire off a timer when shift is released and continue to
+maintain the 'shifted' state for a period of a few seconds to make it
+easier to use a modifier from another layer. It also allows us to
+allow for a little slop when normally people are typing quickly. Even
+if the shifted state only stayed around for hundreds of ms it would
+probably still improve typing accuracy.
+
+key-press shift
+key-release shift
+timer 200ms maintain shifted state until it fires
+key-press a
+key-release a
+event 'A'
+timer cancelled at last event or after timer fires
+
 
 
