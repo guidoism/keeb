@@ -144,6 +144,10 @@ z      KC_Z      KC.Z
 ~      KC_TILDE  KC.TILDE
 
 ◌      KC_NO     KC.NO
+:;     COLON_SEMI COLON_SEMI
+
+
+
 
 ⌃       KC_LCTL   KC.LCTL
 ⇧       KC_LSFT   KC.LSFT
@@ -171,7 +175,6 @@ P↓   KC_PGDN   KC.PGDN
 ←    KC_LEFT   KC.LEFT
 ↓    KC_DOWN   KC.DOWN
 ↑    KC_UP   KC.UP
-
 
 M₀   MO(0)   KC.MO(0)
 M₁   MO(1)   KC.MO(1)
@@ -208,7 +211,6 @@ F10    KC_F10    KC.F10
 F11    KC_F11    KC.F11
 F12    KC_F12    KC.F12
 
-
 #+end_example
 
 
@@ -221,7 +223,7 @@ F12    KC_F12    KC.F12
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
 ⌃    a    s    d    f    g    h    j    k    l    :    RET
 ⇧    z    x    c    v    b    n    m    ,    .    /    ;
-M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    ◌
+M3  ESC  OPT  CMD   M1   M6   ␣    M2   ◌    ◌    ◌    CS
 
 ~    !    @    #    $    %    ^    &    *    ◌    ◌    ◌
 ◌    ◌    ◌    ◌    ◌    ◌    ◌    _    +    "    '    |
@@ -319,13 +321,15 @@ the old number layer.
 - [X] Move ESC to another layer
 - [ ] There should be a paste button on the move layer (C-y)
 - [ ] Searching is part of moving in emacs and should be on move layer
+- [ ] Shift-: should be ;
+- [ ] Find something better for the place where ; is
 
 #+name: planck_20221018
 #+begin_example
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
 ⌃    a    s    d    f    g    h    j    k    l    :    RET
 ⇧    z    x    c    v    b    n    m    ,    .    /    ;
-⍉M3 ESC  OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
+⍉M3  ◌   OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    :;
 
 ~    !    @    #    $    %    ^    7    8    9    ◌    ◌
 ◌    "    &    *    _    ◌    +    4    5    6    '    |
@@ -588,7 +592,7 @@ return '\n'.join([pretty(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 KC.TAB, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.BSPC,
 KC.LCTL, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, KC.COLN, KC.ENT,
 KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.SCLN,
-D(KC.MO(3)), KC.ESC, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
+D(KC.MO(3)), KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 1
@@ -654,7 +658,7 @@ class KMKKeyboard(_KMKKeyboard):
 import board
 from kb import KMKKeyboard
 from kmk.handlers.sequences import simple_key_sequence
-from kmk.keys import KC
+from kmk.keys import KC, make_key
 from kmk.modules.layers import Layers
 
 D = lambda k: simple_key_sequence((k, KC.F12))
@@ -662,6 +666,43 @@ D = lambda k: simple_key_sequence((k, KC.F12))
 keyboard = KMKKeyboard()
 keyboard.debug_enabled = False
 keyboard.modules.append(Layers())
+
+def colon_pressed(key, keyboard, KC, *args, **kwargs):
+    TRIGGERS = {KC.LSHIFT, KC.RSHIFT}
+
+    # We just need to toggle shift
+    if TRIGGERS.intersection(keyboard.keys_pressed):
+        # GUIDO: Use keyboard.add_key and keyboard.remove_key
+        
+        #key.has_modifiers.remove(KC.LSHIFT)
+        #key.has_modifiers.remove(KC.RSHIFT)
+        keyboard.keys_pressed.discard(KC.LSHIFT)
+        keyboard.keys_pressed.discard(KC.RSHIFT)
+        keyboard.keys_pressed.discard(KC.COLON)
+        keyboard.keys_pressed.add(KC.SEMICOLON)
+        keyboard.hid_pending = True
+        print('SEMI:', keyboard)
+        return keyboard
+
+    keyboard.keys_pressed.add(KC.COLON)
+    keyboard.hid_pending = True
+    print('COLON:', keyboard)
+
+    return keyboard
+
+
+def colon_released(key, keyboard, KC, *args, **kwargs):
+    keyboard.keys_pressed.discard(KC.SEMICOLON)
+    keyboard.keys_pressed.discard(KC.COLON)
+    keyboard.hid_pending = True
+    return keyboard
+
+COLON_SEMI = make_key(None, ('COLON_SEMI',),
+                      on_press=colon_pressed,
+                      on_release=colon_released,
+                      )
+
+
 keyboard.keymap = [
     <<generate_kmk_keymap()>>
 ]
