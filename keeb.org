@@ -667,26 +667,26 @@ keyboard = KMKKeyboard()
 keyboard.debug_enabled = False
 keyboard.modules.append(Layers())
 
+discarded_shift = []
+
 def colon_pressed(key, keyboard, KC, *args, **kwargs):
     TRIGGERS = {KC.LSHIFT, KC.RSHIFT}
 
     # We just need to toggle shift
     if TRIGGERS.intersection(keyboard.keys_pressed):
-        # GUIDO: Use keyboard.add_key and keyboard.remove_key
-        
-        #key.has_modifiers.remove(KC.LSHIFT)
-        #key.has_modifiers.remove(KC.RSHIFT)
-        keyboard.keys_pressed.discard(KC.LSHIFT)
-        keyboard.keys_pressed.discard(KC.RSHIFT)
+        if KC.LSHIFT in keyboard.keys_pressed:
+            keyboard.keys_pressed.remove(KC.LSHIFT)
+            discarded_shift.append(KC.LSHIFT)
+        if KC.RSHIFT in keyboard.keys_pressed:
+            keyboard.keys_pressed.remove(KC.RSHIFT)
+            discarded_shift.append(KC.RSHIFT)
         keyboard.keys_pressed.discard(KC.COLON)
         keyboard.keys_pressed.add(KC.SEMICOLON)
         keyboard.hid_pending = True
-        print('SEMI:', keyboard)
         return keyboard
 
     keyboard.keys_pressed.add(KC.COLON)
     keyboard.hid_pending = True
-    print('COLON:', keyboard)
 
     return keyboard
 
@@ -694,6 +694,8 @@ def colon_pressed(key, keyboard, KC, *args, **kwargs):
 def colon_released(key, keyboard, KC, *args, **kwargs):
     keyboard.keys_pressed.discard(KC.SEMICOLON)
     keyboard.keys_pressed.discard(KC.COLON)
+    while discarded_shift:
+        keyboard.keys_pressed.add(discarded_shift.pop())
     keyboard.hid_pending = True
     return keyboard
 
