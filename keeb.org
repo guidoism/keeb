@@ -578,17 +578,41 @@ for s in conversion_in.split('\n')[1:]:
         k, *vals = re.findall(r'\S+', s)
         conversion[k] = vals[1]
 
+escape = {
+    '&': '\\&', '%': '\\%', '$': '\\$', '#': '\\#', '_': '\\_', '{': '$\\{$', '}': '$\\}$',
+    '~': '\\char`\\~', '^': '\\char`\\^', '\\': 'poop',
+    '⇥': 'TAB', '◌': '' # '\\bigcirc',
+}
+import string
+def key(k):
+    if k in string.ascii_lowercase:
+        k = k.upper()
+    return escape.get(k, k)
+layer = lambda l: [key(k) for k in l.split()]
+
+def weave(i, layer):
+    s = [f'Layer {i}', '\\tt \halign{', '&'.join(['\\hfil#\\hfil']*12), '\\cr']
+    for row in chunk(layer, 12):
+        s.append(' & '.join(row) + ' \\cr')
+    s.append('}')
+    return '\n'.join(s)
+
+tex = '\n'.join([weave(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
+with open('output/pretty.tex', 'w') as f:
+    f.write(tex)
+    f.write('\\bye')
+
 key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
-def pretty(i, layer):
+def tangle(i, layer):
     s = ['[', f'# Layer {i}']
     for row in chunk(layer, 12):
         s.append(', '.join(row) + ',')
     s.append('],')
     return '\n'.join(s)
 
-return '\n'.join([pretty(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
+return '\n'.join([tangle(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 #+end_src
 
 #+RESULTS: generate_kmk_keymap
@@ -618,7 +642,7 @@ KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 # Layer 3
 KC.ESC, KC.NO, KC.NO, KC.F3, KC.F4, KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, KC.NO, KC.NO,
-KC.NO, KC.LCTL(KC.Z), KC.LCTL(KC.X), KC.LCTL(KC.C), KC.LCTL(KC.), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
+KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
