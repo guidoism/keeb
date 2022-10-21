@@ -327,9 +327,9 @@ the old number layer.
 #+name: planck_20221018
 #+begin_example
 ⇥    q    w    e    r    t    y    u    i    o    p    BS
-⌃    a    s    d    f    g    h    j    k    l    :    RET
-⇧    z    x    c    v    b    n    m    ,    .    /    ;
-⍉M3  ◌   OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    :;
+⌃    a    s    d    f    g    h    j    k    l    :;   RET
+⇧    z    x    c    v    b    n    m    ,    .    /    ◌
+◌    ◌   OPT  CMD   M1   M3   ␣    M2   ◌    ◌    ◌    ◌
 
 ~    !    @    #    $    %    ^    7    8    9    ◌    ◌
 ◌    "    &    *    _    ◌    +    4    5    6    '    |
