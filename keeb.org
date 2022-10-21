@@ -591,16 +591,18 @@ def key(k):
 layer = lambda l: [key(k) for k in l.split()]
 
 def weave(i, layer):
-    s = [f'Layer {i}', '\\tt \halign{', '&'.join(['\\hfil#\\hfil']*12), '\\cr']
+    s = []
     for row in chunk(layer, 12):
         s.append(' & '.join(row) + ' \\cr')
-    s.append('}')
-    return '\n'.join(s)
+    return '\n'.join(s) + '\\cr'
 
 tex = '\n'.join([weave(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 with open('output/pretty.tex', 'w') as f:
+    f.write('\\tt \halign{\n')
+    f.write('&'.join(['\\hfil\\quad#\\quad\\hfil']*12))
+    f.write('\\cr\n')
     f.write(tex)
-    f.write('\\bye')
+    f.write('}\n\\bye')
 
 key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
