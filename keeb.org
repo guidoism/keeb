@@ -579,7 +579,6 @@ for s in conversion_in.split('\n')[1:]:
         conversion[k] = vals[1]
 
 key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
-#key = lambda k: conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
 def pretty(i, layer):
