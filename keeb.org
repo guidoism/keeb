@@ -367,6 +367,8 @@ ESC  ◌    ◌    F3   F4   ◌    ◌    P↑   ↑    P↓   ◌    ◌
 Now that we have the old number and symbols layers gone,
 let's see what else we can clean up
 
+- [ ] Make it easier to switch between buffers in emacs
+- [ ] Add CMD support to move layer
 - [ ] Turn space into shift if held down
 - [ ] Add caps word (maybe to the function key layer?)
 - [ ] Figure out what I'm going to do with the mostly empty RSE
@@ -610,6 +612,9 @@ def key_down(key, context):
 
 #+name: generate_kmk_keymap
 #+begin_src python :var src=planck_20221018 :var conversion_in=conversion :results value
+import json
+json.dump(src.split('\n\n'), open('output/layers.json', 'w'))
+
 def chunk(iterable, n):
     args = [iter(iterable)] * n
     return zip(*args)
@@ -746,6 +751,8 @@ keyboard = KMKKeyboard()
 keyboard.debug_enabled = False
 keyboard.modules.append(Layers())
 
+<<layer_change_extension>>
+
 discarded_shift = []
 
 def colon_pressed(key, keyboard, KC, *args, **kwargs):
@@ -769,7 +776,6 @@ def colon_pressed(key, keyboard, KC, *args, **kwargs):
 
     return keyboard
 
-
 def colon_released(key, keyboard, KC, *args, **kwargs):
     keyboard.keys_pressed.discard(KC.SEMICOLON)
     keyboard.keys_pressed.discard(KC.COLON)
@@ -792,7 +798,95 @@ if __name__ == '__main__':
     keyboard.go()
 #+end_src
 
+#+end_src
 
+*** Status Viewer
+
+#+name: status.py
+#+begin_src python :tangle output/status.py :results value pp
+import json, subprocess, serial, re, rich, rich.console
+layers = json.load(open('layers.json'))
+p = subprocess.run(['/Users/guido/miniforge3/bin/discotool', 'json'], capture_output=True)
+devs = json.loads(p.stdout)
+vol = lambda d: {v['name'] for v in d['volumes']}
+path = [d['ports'][0]['dev'] for d in devs if 'KEEB-1' in vol(d)][0]
+ser = serial.Serial(path)
+con = rich.console.Console()
+while s := ser.readline():
+    if m := re.match(r'Layer: (\d+)', s.decode()):
+        n = int(m.group(1))
+        con.clear()
+        con.print(layers[n].replace('◌', '[dim]◌[/dim]'))
+#+end_src
+
+#+RESULTS: status.py
+
+
+*** Layer Change Extension
+
+#+name: layer_change_extension
+#+begin_src python
+
+from kmk.extensions import Extension
+
+class LayerChangeKeyEvent(Extension):
+    def __init__(self):
+        self._prevLayers = 0
+
+    def on_runtime_enable(self, sandbox):
+        return
+
+    def on_runtime_disable(self, sandbox):
+        return
+
+    def during_bootup(self, board):
+        return
+
+    def before_matrix_scan(self, sandbox):
+        if sandbox.active_layers[0] != self._prevLayers:
+            self._prevLayers = sandbox.active_layers[0]
+            try:
+                n = sandbox.active_layers[0]
+                print(f'Layer: {n}')
+                #if n == 0:
+                #    keyboard.tap_key(KC.MEH(KC.N0))
+                #elif n == 1:
+                #    keyboard.tap_key(KC.MEH(KC.N1))
+                #elif n == 2:
+                #    keyboard.tap_key(KC.MEH(KC.N2))
+                #elif n == 3:
+                #    keyboard.tap_key(KC.MEH(KC.N3))
+                #elif n == 4:
+                #    keyboard.tap_key(KC.MEH(KC.N4))
+                #elif n == 5:
+                #    keyboard.tap_key(KC.MEH(KC.N5))
+                #elif n == 6:
+                #    keyboard.tap_key(KC.MEH(KC.N6))
+            except e:
+                print(e)
+        return
+
+    def after_matrix_scan(self, sandbox):
+        return
+
+    def before_hid_send(self, sandbox):
+        return
+
+    def after_hid_send(self, sandbox):
+        return
+
+    def on_powersave_enable(self, sandbox):
+        return
+
+    def on_powersave_disable(self, sandbox):
+        return
+
+layer_change_extension = LayerChangeKeyEvent()    
+keyboard.extensions.append(layer_change_extension)
+    
+#+end_src
+
+#+begin_src python
 
 
 * Formal definitions and finite automata
