@@ -394,7 +394,7 @@ SFT   z    x    c    v    b        n    m    ,    .    /    ◌
  ◌    <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
 
-ESC   ◌    ◌    F3   F4   ◌        ◌    P↑   ↑    P↓   ◌    ◌
+ESC   ◌    ◌    F3   F4   ◌        ◌   P↑    ↑   P↓    ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ←    ↓    →    ◌    ◌
  ◌   ⌃z   ⌃x   ⌃c   ⌃v    ◌        ◌   HME   ◌   END   ◌    ◌
  ◌    ◌   OPT  CMD   M1   ◌        ◌    ◌    ◌    ◌    ◌    ◌
