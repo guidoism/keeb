@@ -219,6 +219,9 @@ F12    KC_F12    KC.F12
 ⌃c     LCMD(KC_C) KC.LCMD(KC.C)
 ⌃v     LCMD(KC_V) KC.LCMD(KC.V)
 
+W←     LCMD(KC_B) KC.LCMD(KC.B)
+W→     LCMD(KC_F) KC.LCMD(KC.F)
+BEG    LCMD(KC_M) KC.LCMD(KC.M)
 
 #+end_example
 
@@ -394,8 +397,8 @@ SFT   z    x    c    v    b        n    m    ,    .    /    ◌
  ◌    <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
 
-ESC   ◌    ◌    F3   F4   ◌        ◌   P↑    ↑   P↓    ◌    ◌
- ◌    ◌    ◌    ◌    ◌    ◌        ◌    ←    ↓    →    ◌    ◌
+ESC   ◌    ◌   F3   F4    ◌        ◌   P↑    ↑   P↓    ◌    ◌
+ ◌    ◌    ◌   W←   W→   BEG       ◌    ←    ↓    →    ◌    ◌
  ◌   ⌃z   ⌃x   ⌃c   ⌃v    ◌        ◌   HME   ◌   END   ◌    ◌
  ◌    ◌   OPT  CMD   M1   ◌        ◌    ◌    ◌    ◌    ◌    ◌
 
