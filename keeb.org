@@ -414,6 +414,21 @@ ESC   ◌    ◌   F3   F4    ◌        ◌   P↑    ↑   P↓    ◌    ◌
 #+end_example
 
 
+*** Emacs shortcuts
+
+This is where we make keymap-like definitions that allow us
+to see emacs shortcuts on our layer status viewer when
+pressing down control, meta, etc.
+
+#+name: emacs_keymap
+#+begin_example
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+#+end_example
+
+
 
 *** Old fork not sure about
 #+name: planck (mark ii)
