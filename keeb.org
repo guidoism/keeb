@@ -247,7 +247,7 @@ Bu4    Bu4 Bu4
 
 
 
-* Keymaps
+* Old Keymaps
 
 #+name: planck_20221012
 #+begin_example
@@ -389,15 +389,19 @@ ESC  ◌    ◌    F3   F4   ◌    ◌    P↑   ↑    P↓   ◌    ◌
 ◌    ◌   OPT  CMD   M4   ◌    ◌    ◌    ◌    ◌    ◌    ◌
 #+end_example
 
+
+* Keymaps
+
 Now that we have the old number and symbols layers gone,
 let's see what else we can clean up
 
 - [X] Make it easier to switch between buffers in emacs
-- [ ] Turn space into shift if held down
+- [ ] Find a better way to shift, probably one-shot
 - [ ] Add caps word (maybe to the function key layer?)
 - [ ] Figure out what I'm going to do with the mostly empty M2
 - [ ] Make use of shift-, and shift-.
 - [ ] Use , and . as modifiers or layer changes if held down
+- [ ] Use Combo of the far pinkies (control and return) for something
 
 #+name: planck_20221020
 #+begin_example
@@ -767,7 +771,7 @@ KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.
 
 * KMK Keyboard definition (no keymap)
 
-#+name: kb.py
+~#+name: kb.py
 #+begin_src python :tangle output/kb.py
 import board
 
@@ -793,6 +797,7 @@ from kb import KMKKeyboard
 from kmk.handlers.sequences import simple_key_sequence
 from kmk.keys import KC, make_key
 from kmk.modules.layers import Layers
+from kmk.modules.modtap import ModTap
 
 D = lambda k: simple_key_sequence((k, KC.F12))
 CYC = simple_key_sequence((KC.LCTL(KC.X), KC.O))
@@ -805,6 +810,7 @@ Bu4 = simple_key_sequence((KC.LCTL(KC.X), KC.N4))
 keyboard = KMKKeyboard()
 keyboard.debug_enabled = False
 keyboard.modules.append(Layers())
+keyboard.modules.append(ModTap())
 
 <<layer_change_extension>>
 <<shifted_colon_semicolon>>
