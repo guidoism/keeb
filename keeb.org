@@ -420,10 +420,19 @@ This is where we make keymap-like definitions that allow us
 to see emacs shortcuts on our layer status viewer when
 pressing down control, meta, etc.
 
+NOTE: Seems like three letter isn't quite enough to be meaningful.
+
 #+name: emacs_keymap
 #+begin_example
+CONTROL
+ ◌    ◌   EoL   ◌   BSe   ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌   BoL  FSe   ◌    ◌   ABT      HLP   ◌    ◌   CTR   ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+
+COMMAND
+ ◌    ◌   EoS   ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌   BoS   ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
 #+end_example
