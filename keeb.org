@@ -225,6 +225,14 @@ F12    KC_F12    KC.F12
 
 W←     LCMD(KC_B) KC.LCMD(KC.B)
 W→     LCMD(KC_F) KC.LCMD(KC.F)
+λ←     TDB        KC.LCTL(KC.LCMD(KC.B))
+λ→     TDB        KC.LCTL(KC.LCMD(KC.F))
+¶←     TDB        KC.LCMD(KC.LCBR)
+¶→     TDB        KC.LCMD(KC.RCBR)
+S←     TDB        KC.LCMD(KC.A)
+S→     TDB        KC.LCMD(KC.E)
+
+
 BEG    LCMD(KC_M) KC.LCMD(KC.M)
 
 CYC    CYC CYC
@@ -403,8 +411,8 @@ SFT   z    x    c    v    b        n    m    ,    .    /   C-M
  ◌    <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌   OPT  CMD  M4    ◌        ◌    ◉    ◌    ◌    ◌    ◌
 
-ESC   ◌    ◌   ◌    ◌     ◌        ◌   P↑    ↑   P↓    ◌    ◌
- ◌    ◌    ◌   W←   W→   BEG       ◌    ←    ↓    →   CYC   ◌
+ESC  λ←   λ→   ¶←   ¶→    ◌        ◌   P↑    ↑   P↓    ◌    ◌
+ ◌   S←   S→   W←   W→   BEG       ◌    ←    ↓    →   CYC   ◌
  ◌   ⌃z   ⌃x   ⌃c   ⌃v    ◌        ◌   HME   ◌   END   ◌    ◌
  ◌    ◌   OPT  CMD  M1    ◉        ◌    ◌    ◌    ◌    ◌    ◌
 
