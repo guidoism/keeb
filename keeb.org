@@ -407,7 +407,7 @@ let's see what else we can clean up
 #+begin_example
 TAB   q    w    e    r    t        y    u    i    o    p   BS 
 CTL   a    s    d    f    g        h    j    k    l    :;  RET
-SFT   z    x    c    v    b        n    m    ,    .    /   C-M
+SFT   z    x    c    v    b        n    m    ,    .    /   ◌
  ◌    ◌   OPT  CMD  M1   M3        ␣   M2   ◌    ◌    ◌    ◌
 
  ~    !    @    #    $    %        ^    7    8    9    ◌    ◌
@@ -428,7 +428,7 @@ ESC  λ←   λ→   ¶←   ¶→    ◌        ◌   P↑    ↑   P↓    ◌
  ◌    F1   F2   F3   F4   F5       F6   F7   F8   F9   F10   ◌
  ◌    ◌    ◌    ◌    ◌    ◌        Bu0  Bu1  Bu2  Bu3  Bu4   ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
- ◌    ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌    ◌   OPT  CMD   ◉    ◌        ◌    ◉    ◌    ◌    ◌    ◌
 
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
@@ -827,19 +827,27 @@ if __name__ == '__main__':
 
 #+name: status.py
 #+begin_src python :tangle output/status.py :results value pp
-import json, subprocess, serial, re, rich, rich.console
+import json, subprocess, serial, re, rich, rich.console, os
+updated = os.stat('layers.json').st_mtime
 layers = json.load(open('layers.json'))
+
 p = subprocess.run(['/Users/guido/miniforge3/bin/discotool', 'json'], capture_output=True)
 devs = json.loads(p.stdout)
 vol = lambda d: {v['name'] for v in d['volumes']}
 path = [d['ports'][0]['dev'] for d in devs if 'KEEB-1' in vol(d)][0]
 ser = serial.Serial(path)
+
 con = rich.console.Console()
 while s := ser.readline():
     if m := re.match(r'Layer: (\d+)', s.decode()):
         n = int(m.group(1))
         con.clear()
         con.print(layers[n].replace('◌', '[dim]◌[/dim]').replace('◉', '[dim]◉[/dim]'))
+
+        if os.stat('layers.json').st_mtime > updated:
+            updated = os.stat('layers.json').st_mtime
+            layers = json.load(open('layers.json'))
+
 #+end_src
 
 #+RESULTS: status.py
