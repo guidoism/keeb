@@ -384,6 +384,7 @@ let's see what else we can clean up
 - [ ] Add caps word (maybe to the function key layer?)
 - [ ] Figure out what I'm going to do with the mostly empty M2
 - [ ] Make use of shift-, and shift-.
+- [ ] Use , and . as modifiers or layer changes if held down
 
 #+name: planck_20221020
 #+begin_example
