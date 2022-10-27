@@ -379,7 +379,7 @@ ESC  ◌    ◌    F3   F4   ◌    ◌    P↑   ↑    P↓   ◌    ◌
 Now that we have the old number and symbols layers gone,
 let's see what else we can clean up
 
-- [ ] Make it easier to switch between buffers in emacs
+- [X] Make it easier to switch between buffers in emacs
 - [ ] Turn space into shift if held down
 - [ ] Add caps word (maybe to the function key layer?)
 - [ ] Figure out what I'm going to do with the mostly empty M2
