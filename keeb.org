@@ -1006,9 +1006,14 @@ for l in layers_in:
     for r in l.split('\n'):
         row = []
         for i, m in enumerate(re.findall(r'(\s*\S+\s*)', r)):
-            row.append(col_color[i])
-            row.append(m)
-            row.append('[/]')
+            if '◌' in m:
+                row.append('[dim]')
+                row.append(m)
+                row.append('[/]')
+            else:
+                row.append(col_color[i])
+                row.append(m)
+                row.append('[/]')
         rows.append(''.join(row))
     layers.append('\n'.join(rows))
         
@@ -1023,7 +1028,7 @@ while s := ser.readline():
     if m := re.match(r'Layer: (\d+)', s.decode()):
         n = int(m.group(1))
         con.clear()
-        con.print(layers[n].replace('◌', '[dim]◌[/dim]').replace('◉', '[dim]◉[/dim]'))
+        con.print(layers[n])
 
         if os.stat('layers.json').st_mtime > updated:
             updated = os.stat('layers.json').st_mtime
