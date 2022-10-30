@@ -217,6 +217,12 @@ M9!  MO(9)   KC.MO(9)
 QWE    KC_DF(1) KC.DF(1)
 COL    KC_DF(7) KC.DF(7)
 
+BT1    TBD  KC.NO   "&bt BT_SEL 0"
+BT2    TBD  KC.NO   "&bt BT_SEL 1"
+BT3    TBD  KC.NO   "&bt BT_SEL 2"
+BT4    TBD  KC.NO   "&bt BT_SEL 3"
+BTC    TBD  KC.NO   "&bt BT_CLR"
+
 F1     KC_F1     KC.F1
 F2     KC_F2     KC.F2
 F3     KC_F3     KC.F3
@@ -454,7 +460,7 @@ ESC  λ←   λ→   ¶←   ¶→    ◌        ◌   P↑    ↑   P↓    ◌
  ◌    ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
 
 QWE   ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
-COL   ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+COL  BT4  BT3  BT2  BT1  BTC       ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
 
@@ -695,10 +701,10 @@ def key_down(key, context):
 #+end_src
 
 
-* Generate KMK firmware keymap list
+* Generate ZMK firmware keymap config
 
-#+name: generate_kmk_keymap
-#+begin_src python :var src=planck_20221020 :var conversion_in=conversion :results value
+#+name: generate_zmk_keymap
+#+begin_src python :var src=planck_20221020 :var conversion_in=conversion :results value :noweb yes
 import json
 json.dump(src.split('\n\n'), open('output/layers.json', 'w'))
 
@@ -713,36 +719,124 @@ for s in conversion_in.split('\n')[1:]:
         k, *vals = re.findall(r'\S+', s)
         conversion[k] = vals[1]
 
-### GUIDO TeX output        
-### GUIDO TeX output        
-escape = {
-    '&': '\\&', '%': '\\%', '$': '\\$', '#': '\\#', '_': '\\_', '{': '$\\{$', '}': '$\\}$',
-    '~': '\\char`\\~', '^': '\\char`\\^', '\\': 'poop',
-    '⇥': 'TAB', '◌': '' # '\\bigcirc',
-}
-import string
-def key(k):
-    if k in string.ascii_lowercase:
-        k = k.upper()
-    return escape.get(k, k)
+key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
-def weave(i, layer):
-    s = []
+def tangle(i, layer):
+    s = ['[', f'# Layer {i}']
     for row in chunk(layer, 12):
-        s.append(' & '.join(row) + ' \\cr')
-    return '\n'.join(s) + '\\cr'
+        s.append(', '.join(row) + ',')
+    s.append('],')
+    return '\n'.join(s)
 
-tex = '\n'.join([weave(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
-with open('output/pretty.tex', 'w') as f:
-    f.write('\\tt \halign{\n')
-    f.write('&'.join(['\\hfil\\quad#\\quad\\hfil']*12))
-    f.write('\\cr\n')
-    f.write(tex)
-    f.write('}\n\\bye')
-### GUIDO TeX output        
-### GUIDO TeX output        
+return '\n'.join([tangle(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
+#+end_src
 
+#+RESULTS: generate_zmk_keymap
+#+begin_example
+[
+# Layer 0
+KC.TAB, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.BSPC,
+KC.LCTL, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, COLON_SEMI, KC.ENT,
+KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 1
+KC.TILDE, KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.N7, KC.N8, KC.N9, KC.NO, KC.NO,
+KC.NO, KC.DQUO, KC.AMPR, KC.PAST, KC.UNDS, KC.NO, KC.PLUS, KC.N4, KC.N5, KC.N6, KC.QUOT, KC.PIPE,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.MO(5), KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 2
+KC.GRV, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.BSPC,
+KC.NO, KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO, KC.BSLS,
+KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 3
+KC.ESC, KC.LCTL(KC.LCMD(KC.B)), KC.LCTL(KC.LCMD(KC.F)), KC.LCMD(KC.LCBR), KC.LCMD(KC.RCBR), KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
+KC.NO, KC.LCMD(KC.A), KC.LCMD(KC.E), KC.LCMD(KC.B), KC.LCMD(KC.F), KC.LCMD(KC.M), KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, CYC, KC.NO,
+KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 4
+KC.NO, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, KC.NO,
+KC.NO, KC.MEH(KC.C), KC.MEH(KC.D), KC.MEH(KC.S), KC.MEH(KC.E), KC.MEH(KC.P), Bu0, Bu1, Bu2, Bu3, Bu4, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 5
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 6
+KC.DF(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.DF(7), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 7
+KC.TAB, KC.Q, KC.W, KC.F, KC.P, KC.G, KC.J, KC.L, KC.U, KC.Y, COLON_SEMI, KC.BSPC,
+KC.LCTL, KC.A, KC.R, KC.S, KC.T, KC.D, KC.H, KC.N, KC.E, KC.I, KC.O, KC.ENT,
+KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 8
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 9
+],
+#+end_example
+
+#+name: devicetree_template
+#+begin_src devicetree
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+/ {
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+#+end_src
+
+
+* Generate KMK firmware keymap list
+
+#+name: generate_kmk_keymap
+#+begin_src python :var src=planck_20221020 :var conversion_in=conversion :results value :noweb yes
+import json
+json.dump(src.split('\n\n'), open('output/layers.json', 'w'))
+
+def chunk(iterable, n):
+    args = [iter(iterable)] * n
+    return zip(*args)
+
+import re, json
+conversion = {}
+for s in conversion_in.split('\n')[1:]:
+    if s:
+        k, *vals = re.findall(r'\S+', s)
+        conversion[k] = vals[1]
+
+<<tex_keymap>>
+
+        
 key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
 layer = lambda l: [key(k) for k in l.split()]
 
@@ -770,35 +864,59 @@ KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.
 KC.TILDE, KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.N7, KC.N8, KC.N9, KC.NO, KC.NO,
 KC.NO, KC.DQUO, KC.AMPR, KC.PAST, KC.UNDS, KC.NO, KC.PLUS, KC.N4, KC.N5, KC.N6, KC.QUOT, KC.PIPE,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.MO(5), KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 2
 KC.GRV, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.BSPC,
 KC.NO, KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO, KC.BSLS,
 KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 3
-KC.ESC, KC.NO, KC.NO, KC.F3, KC.F4, KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, KC.NO, KC.NO,
+KC.ESC, KC.LCTL(KC.LCMD(KC.B)), KC.LCTL(KC.LCMD(KC.F)), KC.LCMD(KC.LCBR), KC.LCMD(KC.RCBR), KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
+KC.NO, KC.LCMD(KC.A), KC.LCMD(KC.E), KC.LCMD(KC.B), KC.LCMD(KC.F), KC.LCMD(KC.M), KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, CYC, KC.NO,
 KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 4
 KC.NO, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, KC.NO,
+KC.NO, KC.MEH(KC.C), KC.MEH(KC.D), KC.MEH(KC.S), KC.MEH(KC.E), KC.MEH(KC.P), Bu0, Bu1, Bu2, Bu3, Bu4, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 5
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 6
+KC.DF(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.DF(7), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 7
+KC.TAB, KC.Q, KC.W, KC.F, KC.P, KC.G, KC.J, KC.L, KC.U, KC.Y, COLON_SEMI, KC.BSPC,
+KC.LCTL, KC.A, KC.R, KC.S, KC.T, KC.D, KC.H, KC.N, KC.E, KC.I, KC.O, KC.ENT,
+KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 8
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+],
+[
+# Layer 9
 ],
 #+end_example
 
@@ -1046,3 +1164,35 @@ timer cancelled at last event or after timer fires
 
 
 
+
+
+* TeX Keymap
+
+#+name: tex_keymap
+#+begin_src python
+escape = {
+    '&': '\\&', '%': '\\%', '$': '\\$', '#': '\\#', '_': '\\_', '{': '$\\{$', '}': '$\\}$',
+    '~': '\\char`\\~', '^': '\\char`\\^', '\\': 'poop',
+    '⇥': 'TAB', '◌': '' # '\\bigcirc',
+}
+import string
+def key(k):
+    if k in string.ascii_lowercase:
+        k = k.upper()
+    return escape.get(k, k)
+layer = lambda l: [key(k) for k in l.split()]
+
+def weave(i, layer):
+    s = []
+    for row in chunk(layer, 12):
+        s.append(' & '.join(row) + ' \\cr')
+    return '\n'.join(s) + '\\cr'
+
+tex = '\n'.join([weave(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
+with open('output/pretty.tex', 'w') as f:
+    f.write('\\tt \halign{\n')
+    f.write('&'.join(['\\hfil\\quad#\\quad\\hfil']*12))
+    f.write('\\cr\n')
+    f.write(tex)
+    f.write('}\n\\bye')
+#+end_src
