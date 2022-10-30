@@ -1000,15 +1000,12 @@ col_color = {
     11: '[cyan]',
 }
 
-from pprint import pprint as pp
-
 layers = []
 for l in layers_in:
     rows = []
     for r in l.split('\n'):
         row = []
         for i, m in enumerate(re.findall(r'(\s*\S+\s*)', r)):
-            print(i, m)
             row.append(col_color[i])
             row.append(m)
             row.append('[/]')
