@@ -439,7 +439,7 @@ SFT   z    x    c    v    b        n    m    ,    .    /    ◌
  ◌    ◌    ◌    ◌    ◌    .        0    1    2    3    /    ◌
  ◌    ◌   OPT  CMD   ◉    ◌        ◌   M5    ◌    ◌    ◌    ◌
 
- `    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌   BS
+ `    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    BS
  ◌    [    ]    (    )    ◌        ◌    -    =    ◌    ◌    \
  ◌    <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌   OPT  CMD  M4    ◌        ◌    ◉    ◌    ◌    ◌    ◌
@@ -923,7 +923,7 @@ KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 
 * KMK Keyboard definition (no keymap)
 
-~#+name: kb.py
+#+name: kb.py
 #+begin_src python :tangle output/kb.py
 import board
 
