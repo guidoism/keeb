@@ -31,7 +31,41 @@ starting the process of keyboard upload and actually doing the copy.
 
 #+begin_src sh
 sleep 2
+rm /Volumes/KEEB-2/code.py
+rsync -r kmk_firmware/kmk /Volumes/KEEB-2/lib
+cp output/btrfly.py /Volumes/KEEB-2/kb.py
+cp output/main.py /Volumes/KEEB-2/
+echo "Done"
+#+end_src
+
+#+RESULTS:
+: Done
+
+
+#+begin_src sh
+sleep 2
 cp output/*.py /Volumes/KEEB-1/
+echo "Done"
+#+end_src
+
+#+begin_src sh
+sleep 2
+rm /Volumes/CRKBD-1-L/code.py
+rsync -r kmk_firmware/kmk /Volumes/CRKBD-1-L/lib
+cp output/crkbd.py /Volumes/CRKBD-1-L/kb.py
+cp output/main.py /Volumes/CRKBD-1-L/
+echo "Done"
+#+end_src
+
+#+RESULTS:
+: Done
+
+#+begin_src sh
+sleep 2
+rm /Volumes/CRKBD-1-R/code.py
+rsync -r kmk_firmware/kmk /Volumes/CRKBD-1-R/lib
+cp output/crkbd.py /Volumes/CRKBD-1-R/kb.py
+cp output/main.py /Volumes/CRKBD-1-R/
 echo "Done"
 #+end_src
 
@@ -46,224 +80,223 @@ https://www.emacswiki.org/emacs/TabStopList
 
 #+name: conversion
 #+begin_example
-char   qmk       kmk      zmk
-␣      KC_SPC    KC.SPC   ?
-!      KC_EXLM   KC.EXLM  ?
-"      KC_DQUO   KC.DQUO  ?
-#      KC_HASH   KC.HASH
-$      KC_DLR    KC.DLR   ?
-%      KC_PERC   KC.PERC  ?
-&      KC_AMPR   KC.AMPR  ?
-'      KC_QUOT   KC.QUOT
-(      KC_LPRN   KC.LPRN  ?
-)      KC_RPRN   KC.RPRN  ?
- *     KC_PAST   KC.PAST
-+      KC_PLUS   KC.PLUS  ?
-,      KC_COMMA  KC.COMMA
--      KC_MINUS  KC.MINUS
-.      KC_DOT    KC.DOT
-/      KC_SLASH  KC.SLASH
-0      KC_0      KC.N0
-1      KC_1      KC.N1
-2      KC_2      KC.N2
-3      KC_3      KC.N3
-4      KC_4      KC.N4
-5      KC_5      KC.N5
-6      KC_6      KC.N6
-7      KC_7      KC.N7
-8      KC_8      KC.N8
-9      KC_9      KC.N9
-:      KC_COLN   KC.COLN  ?
-;      KC_SCLN   KC.SCLN
-<      KC_LT     KC.LABK    ?
-=      KC_EQL    KC.EQL
->      KC_GT     KC.RABK    ?
-?      KC_QUES   KC.QUES  ?
-@      KC_AT     KC.AT
-A      S(A)      KC.LSFT(A) 
-B      S(B)      KC.LSFT(B)
-C      S(C)      KC.LSFT(C)
-D      S(D)      KC.LSFT(D)
-E      S(E)      KC.LSFT(E)
-F      S(F)      KC.LSFT(F)
-G      S(G)      KC.LSFT(G)
-H      S(H)      KC.LSFT(H)
-I      S(I)      KC.LSFT(I)
-J      S(J)      KC.LSFT(J)
-K      S(K)      KC.LSFT(K)
-L      S(L)      KC.LSFT(L)
-M      S(M)      KC.LSFT(M)
-N      S(N)      KC.LSFT(N)
-O      S(O)      KC.LSFT(O)
-P      S(P)      KC.LSFT(P)
-Q      S(Q)      KC.LSFT(Q)
-R      S(R)      KC.LSFT(R)
-S      S(S)      KC.LSFT(S)
-T      S(T)      KC.LSFT(T)
-U      S(U)      KC.LSFT(U)
-V      S(V)      KC.LSFT(V)
-W      S(W)      KC.LSFT(W)
-X      S(X)      KC.LSFT(X)
-Y      S(Y)      KC.LSFT(Y)
-Z      S(Z)      KC.LSFT(Z)
-[      KC_LBRC   KC.LBRC
-\      KC_BSLS   KC.BSLS
-]      KC_RBRC   KC.RBRC
-^      KC_CIRC   KC.CIRC
-_      KC_UNDS   KC.UNDS
-`      KC_GRV    KC.GRV
-a      KC_A      KC.A
-b      KC_B      KC.B
-c      KC_C      KC.C
-d      KC_D      KC.D
-e      KC_E      KC.E
-f      KC_F      KC.F
-g      KC_G      KC.G
-h      KC_H      KC.H
-i      KC_I      KC.I
-j      KC_J      KC.J
-k      KC_K      KC.K
-l      KC_L      KC.L
-m      KC_M      KC.M
-n      KC_N      KC.N
-o      KC_O      KC.O
-p      KC_P      KC.P
-q      KC_Q      KC.Q
-r      KC_R      KC.R
-s      KC_S      KC.S
-t      KC_T      KC.T
-u      KC_U      KC.U
-v      KC_V      KC.V
-w      KC_W      KC.W
-x      KC_X      KC.X
-y      KC_Y      KC.Y
-z      KC_Z      KC.Z
-{      KC_LCBR   KC.LCBR
-|      KC_PIPE   KC.PIPE
-}      KC_RCBR   KC.RCBR
-~      KC_TILDE  KC.TILDE
+char   qmk       kmk          zmk
+␣      KC_SPC    KC.SPC       &kp SPACE
+!      KC_EXLM   KC.EXLM      &kp EXCL
+"      KC_DQUO   KC.DQUO      &kp DQUO
+#      KC_HASH   KC.HASH      &kp HASH
+$      KC_DLR    KC.DLR       &kp DLR
+%      KC_PERC   KC.PERC      &kp PERC
+&      KC_AMPR   KC.AMPR      &kp AMPR
+'      KC_QUOT   KC.QUOT      &kp QUOT
+(      KC_LPRN   KC.LPRN      &kp LPRN  
+)      KC_RPRN   KC.RPRN      &kp RPRN  
+ *     KC_PAST   KC.PAST      &kp PAST
++      KC_PLUS   KC.PLUS      &kp PLUS  
+,      KC_COMMA  KC.COMMA     &kp COMMA
+-      KC_MINUS  KC.MINUS     &kp MINUS
+.      KC_DOT    KC.DOT       &kp DOT
+/      KC_SLASH  KC.SLASH     &kp SLASH
+0      KC_0      KC.N0        &kp 0
+1      KC_1      KC.N1        &kp 1
+2      KC_2      KC.N2        &kp 2
+3      KC_3      KC.N3        &kp 3
+4      KC_4      KC.N4        &kp 4
+5      KC_5      KC.N5        &kp 5
+6      KC_6      KC.N6        &kp 6
+7      KC_7      KC.N7        &kp 7
+8      KC_8      KC.N8        &kp 8
+9      KC_9      KC.N9        &kp 9
+:      KC_COLN   KC.COLN      &kp COLN  
+;      KC_SCLN   KC.SCLN      &kp SCLN
+<      KC_LT     KC.LABK      &kp LABK    
+=      KC_EQL    KC.EQL       &kp EQL
+>      KC_GT     KC.RABK      &kp RABK    
+?      KC_QUES   KC.QUES      &kp QUES  
+@      KC_AT     KC.AT        &kp AT
+A      S(A)      KC.LSFT(A) ?
+B      S(B)      KC.LSFT(B) ?
+C      S(C)      KC.LSFT(C) ?
+D      S(D)      KC.LSFT(D) ?
+E      S(E)      KC.LSFT(E) ?
+F      S(F)      KC.LSFT(F) ?
+G      S(G)      KC.LSFT(G) ?
+H      S(H)      KC.LSFT(H) ?
+I      S(I)      KC.LSFT(I) ?
+J      S(J)      KC.LSFT(J) ?
+K      S(K)      KC.LSFT(K) ?
+L      S(L)      KC.LSFT(L) ?
+M      S(M)      KC.LSFT(M) ?
+N      S(N)      KC.LSFT(N) ?
+O      S(O)      KC.LSFT(O) ?
+P      S(P)      KC.LSFT(P) ?
+Q      S(Q)      KC.LSFT(Q) ?
+R      S(R)      KC.LSFT(R) ?
+S      S(S)      KC.LSFT(S) ?
+T      S(T)      KC.LSFT(T) ?
+U      S(U)      KC.LSFT(U) ?
+V      S(V)      KC.LSFT(V) ?
+W      S(W)      KC.LSFT(W) ?
+X      S(X)      KC.LSFT(X) ?
+Y      S(Y)      KC.LSFT(Y) ?
+Z      S(Z)      KC.LSFT(Z) ?
+[      KC_LBRC   KC.LBRC    &kc LBRC
+\      KC_BSLS   KC.BSLS    &kc BSLS
+]      KC_RBRC   KC.RBRC    &kc RBRC
+^      KC_CIRC   KC.CIRC    &kc CIRC
+_      KC_UNDS   KC.UNDS    &kc UNDS
+`      KC_GRV    KC.GRV    &kc GRV
+a      KC_A      KC.A    &kc A
+b      KC_B      KC.B    &kc B
+c      KC_C      KC.C    &kc C
+d      KC_D      KC.D    &kc D
+e      KC_E      KC.E    &kc E
+f      KC_F      KC.F    &kc F
+g      KC_G      KC.G    &kc G
+h      KC_H      KC.H    &kc H
+i      KC_I      KC.I    &kc I
+j      KC_J      KC.J    &kc J
+k      KC_K      KC.K    &kc K
+l      KC_L      KC.L    &kc L
+m      KC_M      KC.M    &kc M
+n      KC_N      KC.N    &kc N
+o      KC_O      KC.O    &kc O
+p      KC_P      KC.P    &kc P
+q      KC_Q      KC.Q    &kc Q
+r      KC_R      KC.R    &kc R
+s      KC_S      KC.S    &kc S
+t      KC_T      KC.T    &kc T
+u      KC_U      KC.U    &kc U
+v      KC_V      KC.V    &kc V
+w      KC_W      KC.W    &kc W
+x      KC_X      KC.X    &kc X
+y      KC_Y      KC.Y    &kc Y
+z      KC_Z      KC.Z    &kc Z
+{      KC_LCBR   KC.LCBR    &kc LCBR
+|      KC_PIPE   KC.PIPE    &kc PIPE
+}      KC_RCBR   KC.RCBR    &kc RCBR
+~      KC_TILDE  KC.TILDE    &kc TILDE
 
-◌      KC_NO     KC.NO
-◉      KC_NO     KC.NO
-:;     COLON_SEMI COLON_SEMI
+◌      KC_NO     KC.NO       &none
+◉      KC_NO     KC.NO       &none
+:;     COLON_SEMI COLON_SEMI ?
+
+⌃       KC_LCTL   KC.LCTL    &kc LCTL
+CTL     KC_LCTL   KC.LCTL    &kc LCTL
+⇧       KC_LSFT   KC.LSFT    &kc LSFT
+SFT     KC_LSFT   KC.LSFT    &kc LSFT
+⌥       KC_LOPT   KC.LOPT    &kc LALT
+OPT     KC_LOPT   KC.LOPT    &kc LALT
+⌘       KC_LCMD   KC.LCMD    &kc LCMD
+CMD     KC_LCMD   KC.LCMD    &kc LCMD
+
+C-M     KC_LCTL(KC_LCMD) KC.LCTL(KC.LCMD) ?
 
 
-⌃       KC_LCTL   KC.LCTL
-CTL     KC_LCTL   KC.LCTL
-⇧       KC_LSFT   KC.LSFT
-SFT     KC_LSFT   KC.LSFT
-⌥      KC_LOPT   KC.LOPT
-OPT     KC_LOPT   KC.LOPT
-⌘       KC_LCMD   KC.LCMD
-CMD     KC_LCMD   KC.LCMD
+⇪      CAPS_WORD   CAPS_WORD    ?
+CAPS   CAPS_WORD   CAPS_WORD    ?
 
-C-M     KC_LCTL(KC_LCMD) KC.LCTL(KC.LCMD)
+↵       KC_ENT   KC.ENT    &kc RET
+RET     KC_ENT   KC.ENT    &kc RET
+⎋      KC_ESC    KC.ESC    &kc ESC
+ESC     KC_ESC   KC.ESC    &kc ESC
+⌫      KC_BSPC   KC.BSPC    &kc BSPC
+BS      KC_BSPC  KC.BSPC    &kc BSPC
+⇥       KC_TAB   KC.TAB    &kc TAB
+TAB     KC_TAB   KC.TAB    &kc TAB
 
+HME  KC_HOME   KC.HOME    &kc HOME
+END  KC_END    KC.END    &kc END
+P↑   KC_PGUP   KC.PGUP    &kc PGUP
+P↓   KC_PGDN   KC.PGDN    &kc PGDN
+→    KC_RIGHT  KC.RIGHT    &kc RIGHT
+←    KC_LEFT   KC.LEFT    &kc LEFT
+↓    KC_DOWN   KC.DOWN    &kc DOWN
+↑    KC_UP     KC.UP    &kc UP
 
-⇪      CAPS_WORD   CAPS_WORD   
-CAPS   CAPS_WORD   CAPS_WORD   
+M₀   MO(0)   KC.MO(0)   &mo 0
+M₁   MO(1)   KC.MO(1)   &mo 1
+M₂   MO(2)   KC.MO(2)   &mo 2
+M₃   MO(3)   KC.MO(3)   &mo 3
+M₄   MO(4)   KC.MO(4)   &mo 4
+M₅   MO(5)   KC.MO(5)   &mo 5
+M₆   MO(6)   KC.MO(6)   &mo 6
+M₇   MO(7)   KC.MO(7)   &mo 7
+M₈   MO(8)   KC.MO(8)   &mo 8
+M₉   MO(9)   KC.MO(9)   &mo 9
 
-↵       KC_ENT   KC.ENT
-RET     KC_ENT   KC.ENT
-⎋      KC_ESC   KC.ESC
-ESC     KC_ESC   KC.ESC
-⌫      KC_BSPC   KC.BSPC
-BS      KC_BSPC   KC.BSPC
-⇥       KC_TAB   KC.TAB
-TAB     KC_TAB   KC.TAB
+M0   MO(0)   KC.MO(0)   &mo 0
+M1   MO(1)   KC.MO(1)   &mo 1
+M2   MO(2)   KC.MO(2)   &mo 2
+M3   MO(3)   KC.MO(3)   &mo 3
+M4   MO(4)   KC.MO(4)   &mo 4
+M5   MO(5)   KC.MO(5)   &mo 5
+M6   MO(6)   KC.MO(6)   &mo 6
+M7   MO(7)   KC.MO(7)   &mo 7
+M8   MO(8)   KC.MO(8)   &mo 8
+M9   MO(9)   KC.MO(9)   &mo 9
 
-HME  KC_HOME   KC.HOME
-END  KC_END   KC.END
-P↑   KC_PGUP   KC.PGUP
-P↓   KC_PGDN   KC.PGDN
-→    KC_RIGHT   KC.RIGHT
-←    KC_LEFT   KC.LEFT
-↓    KC_DOWN   KC.DOWN
-↑    KC_UP   KC.UP
+M0!  MO(0)   KC.MO(0) ?
+M1!  MO(1)   KC.MO(1) ?
+M2!  MO(2)   KC.MO(2) ?
+M3!  MO(3)   KC.MO(3) ?
+M4!  MO(4)   KC.MO(4) ?
+M5!  MO(5)   KC.MO(5) ?
+M6!  MO(6)   KC.ONESHOT(KC.MO(6),tap_time=10000) ?
+M7!  MO(7)   KC.MO(7) ?
+M8!  MO(8)   KC.MO(8) ?
+M9!  MO(9)   KC.MO(9) ?
 
-M₀   MO(0)   KC.MO(0)
-M₁   MO(1)   KC.MO(1)
-M₂   MO(2)   KC.MO(2)
-M₃   MO(3)   KC.MO(3)
-M₄   MO(4)   KC.MO(4)
-M₅   MO(5)   KC.MO(5)
-M₆   MO(6)   KC.MO(6)
-M₇   MO(7)   KC.MO(7)
-M₈   MO(8)   KC.MO(8)
-M₉   MO(9)   KC.MO(9)
+QWE    KC_DF(1) KC.DF(1) ?
+COL    KC_DF(7) KC.DF(7) ?
 
-M0   MO(0)   KC.MO(0)
-M1   MO(1)   KC.MO(1)
-M2   MO(2)   KC.MO(2)
-M3   MO(3)   KC.MO(3)
-M4   MO(4)   KC.MO(4)
-M5   MO(5)   KC.MO(5)
-M6   MO(6)   KC.MO(6)
-M7   MO(7)   KC.MO(7)
-M8   MO(8)   KC.MO(8)
-M9   MO(9)   KC.MO(9)
+BT1    TBD  KC.NO   "&bt BT_SEL 0" ?
+BT2    TBD  KC.NO   "&bt BT_SEL 1" ?
+BT3    TBD  KC.NO   "&bt BT_SEL 2" ?
+BT4    TBD  KC.NO   "&bt BT_SEL 3" ?
+BTC    TBD  KC.NO   "&bt BT_CLR" ?
 
-M0!  MO(0)   KC.MO(0)
-M1!  MO(1)   KC.MO(1)
-M2!  MO(2)   KC.MO(2)
-M3!  MO(3)   KC.MO(3)
-M4!  MO(4)   KC.MO(4)
-M5!  MO(5)   KC.MO(5)
-M6!  MO(6)   KC.ONESHOT(KC.MO(6),tap_time=10000)
-M7!  MO(7)   KC.MO(7)
-M8!  MO(8)   KC.MO(8)
-M9!  MO(9)   KC.MO(9)
+F1     KC_F1     KC.F1    &kc F1
+F2     KC_F2     KC.F2    &kc F2
+F3     KC_F3     KC.F3    &kc F3
+F4     KC_F4     KC.F4    &kc F4
+F5     KC_F5     KC.F5    &kc F5
+F6     KC_F6     KC.F6    &kc F6
+F7     KC_F7     KC.F7    &kc F7
+F8     KC_F8     KC.F8    &kc F8
+F9     KC_F9     KC.F9    &kc F9
+F10    KC_F10    KC.F10    &kc F10
+F11    KC_F11    KC.F11    &kc F11
+F12    KC_F12    KC.F12    &kc F12
 
-QWE    KC_DF(1) KC.DF(1)
-COL    KC_DF(7) KC.DF(7)
+⌃z     LCMD(KC_Z) KC.LCMD(KC.Z) ?
+⌃x     LCMD(KC_X) KC.LCMD(KC.X) ?
+⌃c     LCMD(KC_C) KC.LCMD(KC.C) ?
+⌃v     LCMD(KC_V) KC.LCMD(KC.V) ?
 
-BT1    TBD  KC.NO   "&bt BT_SEL 0"
-BT2    TBD  KC.NO   "&bt BT_SEL 1"
-BT3    TBD  KC.NO   "&bt BT_SEL 2"
-BT4    TBD  KC.NO   "&bt BT_SEL 3"
-BTC    TBD  KC.NO   "&bt BT_CLR"
+W←     LCMD(KC_B) KC.LCMD(KC.B) ?
+W→     LCMD(KC_F) KC.LCMD(KC.F) ?
+λ←     TDB        KC.LCTL(KC.LCMD(KC.B)) ?
+λ→     TDB        KC.LCTL(KC.LCMD(KC.F)) ?
+¶←     TDB        KC.LCMD(KC.LCBR) ?
+¶→     TDB        KC.LCMD(KC.RCBR) ?
+S←     TDB        KC.LCMD(KC.A) ?
+S→     TDB        KC.LCMD(KC.E) ?
 
-F1     KC_F1     KC.F1
-F2     KC_F2     KC.F2
-F3     KC_F3     KC.F3
-F4     KC_F4     KC.F4
-F5     KC_F5     KC.F5
-F6     KC_F6     KC.F6
-F7     KC_F7     KC.F7
-F8     KC_F8     KC.F8
-F9     KC_F9     KC.F9
-F10    KC_F10    KC.F10
-F11    KC_F11    KC.F11
-F12    KC_F12    KC.F12
+BEG    LCMD(KC_M) KC.LCMD(KC.M) ?
 
-⌃z     LCMD(KC_Z) KC.LCMD(KC.Z)
-⌃x     LCMD(KC_X) KC.LCMD(KC.X)
-⌃c     LCMD(KC_C) KC.LCMD(KC.C)
-⌃v     LCMD(KC_V) KC.LCMD(KC.V)
+CYC    CYC CYC ?
+Bu0    Bu0 Bu0 ?
+Bu1    Bu1 Bu1 ?
+Bu2    Bu2 Bu2 ?
+Bu3    Bu3 Bu3 ?
+Bu4    Bu4 Bu4 ?
 
-W←     LCMD(KC_B) KC.LCMD(KC.B)
-W→     LCMD(KC_F) KC.LCMD(KC.F)
-λ←     TDB        KC.LCTL(KC.LCMD(KC.B))
-λ→     TDB        KC.LCTL(KC.LCMD(KC.F))
-¶←     TDB        KC.LCMD(KC.LCBR)
-¶→     TDB        KC.LCMD(KC.RCBR)
-S←     TDB        KC.LCMD(KC.A)
-S→     TDB        KC.LCMD(KC.E)
-
-BEG    LCMD(KC_M) KC.LCMD(KC.M)
-
-CYC    CYC CYC
-Bu0    Bu0 Bu0
-Bu1    Bu1 Bu1
-Bu2    Bu2 Bu2
-Bu3    Bu3 Bu3
-Bu4    Bu4 Bu4
-
-∫E     TBD KC.MEH(KC.E)
-∫S     TBD KC.MEH(KC.S)
-∫D     TBD KC.MEH(KC.D)
-∫C     TBD KC.MEH(KC.C)
-∫P     TBD KC.MEH(KC.P)
+∫E     TBD KC.MEH(KC.E) ?
+∫S     TBD KC.MEH(KC.S) ?
+∫D     TBD KC.MEH(KC.D) ?
+∫C     TBD KC.MEH(KC.C) ?
+∫P     TBD KC.MEH(KC.P) ?
 
 
 #+end_example
@@ -474,6 +507,123 @@ SFT   z    x    c    v    b        k    m    ,    .    /    ◌
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
  ◌    ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
 
+#+end_example
+
+#+name: btrfly_20221202
+#+begin_example
+  q    w    e    r    t        y    u    i    o    p  
+  a    s    d    f    g        h    j    k    l    :; 
+  z    x    c    v    b        n    m    ,    .    /  
+ ESC  OPT  CMD  M1   M3       CTL   ␣   M2    ◌    ◌
+                SFT  TAB      BS   RET   ◌ ◌ ◌ ◌ ◌ ◌
+
+  !    @    #    $    %        ^    7    8    9    ◌  
+  "    &    *    _    ◌        +    4    5    6    '  
+  ◌    ◌    ◌    ◌    .        0    1    2    3    /  
+  ◌   OPT  CMD   ◉    ◌        ◌   M5    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  [    ]    (    )    ◌        ◌    -    =    ◌    ◌  
+  <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌   OPT  CMD  M4    ◌        ◌    ◉    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+ λ←   λ→   ¶←   ¶→    ◌        ◌   P↑    ↑   P↓    ◌  
+ S←   S→   W←   W→   BEG       ◌    ←    ↓    →   CYC 
+ ⌃z   ⌃x   ⌃c   ⌃v    ◌        ◌   HME   ◌   END   ◌  
+  ◌   OPT  CMD  M1    ◉        ◌    ◌    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+  F1   F2   F3   F4   F5       F6   F7   F8   F9   F10
+  ∫C   ∫D   ∫S   ∫E   ∫P       Bu0  Bu1  Bu2  Bu3  Bu4
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌   OPT  CMD   ◉   M6!       ◌    ◉    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+ BT4  BT3  BT2  BT1  BTC       ◌    ◌    ◌    ◌    ◌  
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+  q    w    f    p    g        j    l    u    y    :; 
+  a    r    s    t    d        h    n    e    i    o  
+  z    x    c    v    b        k    m    ,    .    /  
+  ◌   OPT  CMD   M1   M3       ␣   M2    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+  ◌   OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌    ◌  
+                 ◌    ◌        ◌    ◌    ◌ ◌ ◌ ◌ ◌ ◌
+
+#+end_example
+
+- [ ] Need a better place for 0 (maybe bottom row of left hand)
+
+#+name: kyria_20221226
+#+begin_example
+TAB   q    w    e    r    t        y    u    i    o    p    BS 
+CTL   a    s    d    f    g        h    j    k    l    :;   RET       M0
+ ◌    z    x    c    v    b        n    m    ,    .    /    ◌         
+                     ◌    ◌        ◌    ◌
+          OPT  CMD  M1   M3       SFT   ␣   M2    ◌
+
+ ~    !    @    #    $    %        ^    7    8    9    ◌    ◌
+ ◌    "    &    *    _    ◌        +    4    5    6    '    |         M1
+ ◌    ◌    ◌    ◌    ◌    .        0    1    2    3    /    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD   ◉    ◌        ◌    ␣   M5    ◌
+
+ `    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    BS
+ ◌    [    ]    (    )    ◌        ◌    -    =    ◌    ◌    \         M2
+ ◌    <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD  M4    ◌        ◌    ◌    ◉    ◌
+
+ESC  λ←   λ→   ¶←   ¶→    ◌        ◌   P↑    ↑   P↓    ◌    ◌
+ ◌   S←   S→   W←   W→   BEG       ◌    ←    ↓    →   CYC   ◌         M3
+ ◌   ⌃z   ⌃x   ⌃c   ⌃v    ◌        ◌   HME   ◌   END   ◌    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD  M1    ◉        ◌    ◌    ◌    ◌
+
+ ◌    F1   F2   F3   F4   F5       F6   F7   F8   F9   F10  ◌
+ ◌    ∫C   ∫D   ∫S   ∫E   ∫P       Bu0  Bu1  Bu2  Bu3  Bu4  ◌         M4
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD   ◉   M6!       ◌    ◉    ◌    ◌
+
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌         M5
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌
+
+QWE   ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+COL  BT4  BT3  BT2  BT1  BTC       ◌    ◌    ◌    ◌    ◌    ◌         M6
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌
+
+TAB   q    w    f    p    g        j    l    u    y    :;   BS
+CTL   a    r    s    t    d        h    n    e    i    o    RET       M7
+SFT   z    x    c    v    b        k    m    ,    .    /    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD   M1   M3       ␣   M2    ◌    ◌
+
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌         M8
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
+                     ◌    ◌        ◌    ◌
+          OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌
 #+end_example
 
 
@@ -713,20 +863,26 @@ def chunk(iterable, n):
     return zip(*args)
 
 import re, json
-conversion = {}
+c = {}
 for s in conversion_in.split('\n')[1:]:
-    if s:
-        k, *vals = re.findall(r'\S+', s)
-        conversion[k] = vals[1]
+    if s.strip():
+        # TODO: split max number of spaces
+        #k, *vals = re.findall(r'\S+', s)
+        k, *vals = s.split(maxsplit=3)
+        if len(vals) >= 3:
+            c[k] = vals[2]
+        else:
+            c[k] = f'Unknown:{len(vals)}'
 
-key = lambda k: f'D({conversion[k[1:]]})' if k[0] == '⍉' else conversion[k]
+key = lambda k: f'D({c[k[1:]]})' if k[0] == '⍉' else c[k]
 layer = lambda l: [key(k) for k in l.split()]
 
 def tangle(i, layer):
-    s = ['[', f'# Layer {i}']
+    s = [f'layer_{i} {{', 'bindings = <']
     for row in chunk(layer, 12):
-        s.append(', '.join(row) + ',')
-    s.append('],')
+        s.append(' '.join([r.strip().ljust(9) for r in row]))
+    s.append('>;')
+    s.append('};')
     return '\n'.join(s)
 
 return '\n'.join([tangle(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
@@ -734,72 +890,82 @@ return '\n'.join([tangle(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 
 #+RESULTS: generate_zmk_keymap
 #+begin_example
-[
-# Layer 0
-KC.TAB, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.BSPC,
-KC.LCTL, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, COLON_SEMI, KC.ENT,
-KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 1
-KC.TILDE, KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.N7, KC.N8, KC.N9, KC.NO, KC.NO,
-KC.NO, KC.DQUO, KC.AMPR, KC.PAST, KC.UNDS, KC.NO, KC.PLUS, KC.N4, KC.N5, KC.N6, KC.QUOT, KC.PIPE,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.MO(5), KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 2
-KC.GRV, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.BSPC,
-KC.NO, KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO, KC.BSLS,
-KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 3
-KC.ESC, KC.LCTL(KC.LCMD(KC.B)), KC.LCTL(KC.LCMD(KC.F)), KC.LCMD(KC.LCBR), KC.LCMD(KC.RCBR), KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
-KC.NO, KC.LCMD(KC.A), KC.LCMD(KC.E), KC.LCMD(KC.B), KC.LCMD(KC.F), KC.LCMD(KC.M), KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, CYC, KC.NO,
-KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 4
-KC.NO, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, KC.NO,
-KC.NO, KC.MEH(KC.C), KC.MEH(KC.D), KC.MEH(KC.S), KC.MEH(KC.E), KC.MEH(KC.P), Bu0, Bu1, Bu2, Bu3, Bu4, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 5
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 6
-KC.DF(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.DF(7), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 7
-KC.TAB, KC.Q, KC.W, KC.F, KC.P, KC.G, KC.J, KC.L, KC.U, KC.Y, COLON_SEMI, KC.BSPC,
-KC.LCTL, KC.A, KC.R, KC.S, KC.T, KC.D, KC.H, KC.N, KC.E, KC.I, KC.O, KC.ENT,
-KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 8
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-],
-[
-# Layer 9
-],
+layer_0 {
+bindings = <
+&kc TAB   &kc Q     &kc W     &kc E     &kc R     &kc T     &kc Y     &kc U     &kc I     &kc O     &kc P     &kc BSPC 
+&kc LCTL  &kc A     &kc S     &kc D     &kc F     &kc G     &kc H     &kc J     &kc K     &kc L     ?         &kc RET  
+&kc LSFT  &kc Z     &kc X     &kc C     &kc V     &kc B     &kc N     &kc M     &kp COMMA &kp DOT   &kp SLASH &none    
+&none     &none     &kc LALT  &kc LCMD  &mo 1     &mo 3     &kp SPACE &mo 2     &none     &none     &none     &none    
+>;
+};
+layer_1 {
+bindings = <
+&kc TILDE &kp EXCL  &kp AT    &kp HASH  &kp DLR   &kp PERC  &kc CIRC  &kp 7     &kp 8     &kp 9     &none     &none    
+&none     &kp DQUO  &kp AMPR  &kp PAST  &kc UNDS  &none     &kp PLUS  &kp 4     &kp 5     &kp 6     &kp QUOT  &kc PIPE 
+&none     &none     &none     &none     &none     &kp DOT   &kp 0     &kp 1     &kp 2     &kp 3     &kp SLASH &none    
+&none     &none     &kc LALT  &kc LCMD  &none     &none     &none     &mo 5     &none     &none     &none     &none    
+>;
+};
+layer_2 {
+bindings = <
+&kc GRV   &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &kc BSPC 
+&none     &kc LBRC  &kc RBRC  &kp LPRN  &kp RPRN  &none     &none     &kp MINUS &kp EQL   &none     &none     &kc BSLS 
+&none     &kp LABK  &kp RABK  &kc LCBR  &kc RCBR  &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &kc LALT  &kc LCMD  &mo 4     &none     &none     &none     &none     &none     &none     &none    
+>;
+};
+layer_3 {
+bindings = <
+&kc ESC   ?         ?         ?         ?         &none     &none     &kc PGUP  &kc UP    &kc PGDN  &none     &none    
+&none     ?         ?         ?         ?         ?         &none     &kc LEFT  &kc DOWN  &kc RIGHT ?         &none    
+&none     ?         ?         ?         ?         &none     &none     &kc HOME  &none     &kc END   &none     &none    
+&none     &none     &kc LALT  &kc LCMD  &mo 1     &none     &none     &none     &none     &none     &none     &none    
+>;
+};
+layer_4 {
+bindings = <
+&none     &kc F1    &kc F2    &kc F3    &kc F4    &kc F5    &kc F6    &kc F7    &kc F8    &kc F9    &kc F10   &none    
+&none     ?         ?         ?         ?         ?         ?         ?         ?         ?         ?         &none    
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &kc LALT  &kc LCMD  &none     ?         &none     &none     &none     &none     &none     &none    
+>;
+};
+layer_5 {
+bindings = <
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &kc LALT  &kc LCMD  &none     &none     &none     &none     &none     &none     &none     &none    
+>;
+};
+layer_6 {
+bindings = <
+?         &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+?         "&bt BT_SEL 3" ? "&bt BT_SEL 2" ? "&bt BT_SEL 1" ? "&bt BT_SEL 0" ? "&bt BT_CLR" ? &none     &none     &none     &none     &none     &none    
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &kc LALT  &kc LCMD  &none     &none     &none     &none     &none     &none     &none     &none    
+>;
+};
+layer_7 {
+bindings = <
+&kc TAB   &kc Q     &kc W     &kc F     &kc P     &kc G     &kc J     &kc L     &kc U     &kc Y     ?         &kc BSPC 
+&kc LCTL  &kc A     &kc R     &kc S     &kc T     &kc D     &kc H     &kc N     &kc E     &kc I     &kc O     &kc RET  
+&kc LSFT  &kc Z     &kc X     &kc C     &kc V     &kc B     &kc K     &kc M     &kp COMMA &kp DOT   &kp SLASH &none    
+&none     &none     &kc LALT  &kc LCMD  &mo 1     &mo 3     &kp SPACE &mo 2     &none     &none     &none     &none    
+>;
+};
+layer_8 {
+bindings = <
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none    
+&none     &none     &kc LALT  &kc LCMD  &none     &none     &none     &none     &none     &none     &none     &none    
+>;
+};
+layer_9 {
+bindings = <
+>;
+};
 #+end_example
 
 #+name: devicetree_template
@@ -819,7 +985,7 @@ KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 * Generate KMK firmware keymap list
 
 #+name: generate_kmk_keymap
-#+begin_src python :var src=planck_20221020 :var conversion_in=conversion :results value :noweb yes
+#+begin_src python :var src=btrfly_20221202 :var conversion_in=conversion :results value :noweb yes
 import json
 json.dump(src.split('\n\n'), open('output/layers.json', 'w'))
 
@@ -842,7 +1008,8 @@ layer = lambda l: [key(k) for k in l.split()]
 
 def tangle(i, layer):
     s = ['[', f'# Layer {i}']
-    for row in chunk(layer, 12):
+    ROWLEN = 10
+    for row in chunk(layer, ROWLEN):
         s.append(', '.join(row) + ',')
     s.append('],')
     return '\n'.join(s)
@@ -854,66 +1021,75 @@ return '\n'.join([tangle(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 #+begin_example
 [
 # Layer 0
-KC.TAB, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.BSPC,
-KC.LCTL, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, COLON_SEMI, KC.ENT,
-KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
+KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P,
+KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, COLON_SEMI,
+KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH,
+KC.ESC, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.LCTL, KC.SPC, KC.MO(2), KC.NO, KC.NO,
+KC.LSFT, KC.TAB, KC.BSPC, KC.ENT, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 1
-KC.TILDE, KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.N7, KC.N8, KC.N9, KC.NO, KC.NO,
-KC.NO, KC.DQUO, KC.AMPR, KC.PAST, KC.UNDS, KC.NO, KC.PLUS, KC.N4, KC.N5, KC.N6, KC.QUOT, KC.PIPE,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.MO(5), KC.NO, KC.NO, KC.NO, KC.NO,
+KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.N7, KC.N8, KC.N9, KC.NO,
+KC.DQUO, KC.AMPR, KC.PAST, KC.UNDS, KC.NO, KC.PLUS, KC.N4, KC.N5, KC.N6, KC.QUOT,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH,
+KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.MO(5), KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 2
-KC.GRV, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.BSPC,
-KC.NO, KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO, KC.BSLS,
-KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO,
+KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 3
-KC.ESC, KC.LCTL(KC.LCMD(KC.B)), KC.LCTL(KC.LCMD(KC.F)), KC.LCMD(KC.LCBR), KC.LCMD(KC.RCBR), KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
-KC.NO, KC.LCMD(KC.A), KC.LCMD(KC.E), KC.LCMD(KC.B), KC.LCMD(KC.F), KC.LCMD(KC.M), KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, CYC, KC.NO,
-KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.LCTL(KC.LCMD(KC.B)), KC.LCTL(KC.LCMD(KC.F)), KC.LCMD(KC.LCBR), KC.LCMD(KC.RCBR), KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO,
+KC.LCMD(KC.A), KC.LCMD(KC.E), KC.LCMD(KC.B), KC.LCMD(KC.F), KC.LCMD(KC.M), KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, CYC,
+KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO,
+KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 4
-KC.NO, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, KC.NO,
-KC.NO, KC.MEH(KC.C), KC.MEH(KC.D), KC.MEH(KC.S), KC.MEH(KC.E), KC.MEH(KC.P), Bu0, Bu1, Bu2, Bu3, Bu4, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10,
+KC.MEH(KC.C), KC.MEH(KC.D), KC.MEH(KC.S), KC.MEH(KC.E), KC.MEH(KC.P), Bu0, Bu1, Bu2, Bu3, Bu4,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 5
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 6
-KC.DF(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.DF(7), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 7
-KC.TAB, KC.Q, KC.W, KC.F, KC.P, KC.G, KC.J, KC.L, KC.U, KC.Y, COLON_SEMI, KC.BSPC,
-KC.LCTL, KC.A, KC.R, KC.S, KC.T, KC.D, KC.H, KC.N, KC.E, KC.I, KC.O, KC.ENT,
-KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO, KC.NO,
+KC.Q, KC.W, KC.F, KC.P, KC.G, KC.J, KC.L, KC.U, KC.Y, COLON_SEMI,
+KC.A, KC.R, KC.S, KC.T, KC.D, KC.H, KC.N, KC.E, KC.I, KC.O,
+KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH,
+KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 8
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 9
@@ -922,6 +1098,65 @@ KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 
 
 * KMK Keyboard definition (no keymap)
+
+#+begin_src sh
+sleep 2
+rm /Volumes/KEEB-2/code.py
+rsync -r kmk_firmware/kmk /Volumes/KEEB-2/lib
+cp output/btrfly.py /Volumes/KEEB-2/kb.py
+cp output/main.py /Volumes/KEEB-2/
+echo "Done"
+#+end_src
+
+#+RESULTS:
+: Done
+
+#+name: btrfly.py
+#+begin_src python :tangle output/btrfly.py
+import board
+from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
+from kmk.scanners import DiodeOrientation
+
+class KMKKeyboard(_KMKKeyboard):
+    col_pins = (#                                                   broken(ora)
+        board.GP6, board.GP7, board.GP15, board.GP8, board.GP27,    board.GP28, board.GP0, board.GP1, board.GP3, board.GP2, 
+    )
+
+    #                                                         broken(bro)
+    row_pins = (board.GP26, board.GP4, board.GP5, board.GP29, board.GP12)
+    
+    diode_orientation = DiodeOrientation.COL2ROW
+#+end_src
+
+#+RESULTS: btrfly.py
+
+#+RESULTS: crkbd.py
+
+
+#+name: crkbd.py
+#+begin_src python :tangle output/crkbd.py
+import board
+from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
+from kmk.scanners import DiodeOrientation
+from kmk.quickpin.pro_micro.kb2040 import pinout as pins
+
+class KMKKeyboard(_KMKKeyboard):
+    col_pins = (pins[19], pins[18], pins[17], pins[16], pins[15], pins[14])
+    row_pins = (pins[6], pins[7], pins[8], pins[9])
+    diode_orientation = DiodeOrientation.COL2ROW
+    data_pin = pins[1]
+    rgb_pixel_pin = pins[0]
+    i2c = board.I2C
+    is_split = True
+
+    coord_mapping = [
+     0,  1,  2,  3,  4,  5,  29, 28, 27, 26, 25, 24,
+     6,  7,  8,  9, 10, 11,  35, 34, 33, 32, 31, 30,
+    12, 13, 14, 15, 16, 17,  41, 40, 39, 38, 37, 36,
+                21, 22, 23,  47, 46, 45,
+    ]
+#+end_src
+
 
 #+name: kb.py
 #+begin_src python :tangle output/kb.py
@@ -942,6 +1177,8 @@ class KMKKeyboard(_KMKKeyboard):
     diode_orientation = DiodeOrientation.COL2ROW
 #+end_src
 
+#+RESULTS: kb.py
+
 #+name: main.py
 #+begin_src python :tangle output/main.py :noweb yes
 import board
@@ -961,10 +1198,18 @@ Bu3 = simple_key_sequence((KC.LCTL(KC.X), KC.N3))
 Bu4 = simple_key_sequence((KC.LCTL(KC.X), KC.N4))
 
 keyboard = KMKKeyboard()
-keyboard.debug_enabled = False
+keyboard.debug_enabled = True
 keyboard.modules.append(Layers())
 keyboard.modules.append(ModTap())
 keyboard.modules.append(OneShot())
+
+if getattr(keyboard, 'is_split', False):
+    from kmk.modules.split import Split, SplitSide
+    from storage import getmount
+    side = SplitSide.RIGHT if str(getmount('/').label)[-1] == 'R' else SplitSide.LEFT
+    print('This is a split keyboard: ', side)
+    s = Split(split_side=side)
+    keyboard.modules.append(s)
 
 <<layer_change_extension>>
 <<shifted_colon_semicolon>>
@@ -976,6 +1221,8 @@ keyboard.keymap = [
 if __name__ == '__main__':
     keyboard.go()
 #+end_src
+
+#+RESULTS: main.py
 
 *** Layer Status Viewer
 
@@ -1037,6 +1284,7 @@ while s := ser.readline():
 #+end_src
 
 #+RESULTS: status.py
+
 
 *** Layer Change Extension
 
@@ -1101,6 +1349,7 @@ layer_change_extension = LayerChangeKeyEvent()
 keyboard.extensions.append(layer_change_extension)
     
 #+end_src
+
 
 *** Shifted Colon/Semicolon
 
@@ -1193,7 +1442,6 @@ key-press a
 key-release a
 event 'A'
 timer cancelled at last event or after timer fires
-
 
 
 

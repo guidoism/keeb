@@ -1,3 +1,6 @@
 [submodule "Cozette"]
 	path = Cozette
 	url = https://github.com/slavfox/Cozette
+[submodule "kmk_firmware"]
+	path = kmk_firmware
+	url = https://github.com/KMKfw/kmk_firmware
