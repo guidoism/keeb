@@ -1111,6 +1111,41 @@ echo "Done"
 #+RESULTS:
 : Done
 
+#+name: kyria.py
+#+begin_src python :tangle output/kyria.py
+import board
+from kmk.kmk_keyboard import KMKKeyboard as _KMKKeyboard
+from kmk.scanners import DiodeOrientation
+from kmk.quickpin.pro_micro.kb2040 import pinout as pins
+
+#       0   23
+#       1   22
+#       2   21
+#       3   20
+#       4   19 row1r
+#       5   18 row2r
+# col4  6   17 row1
+# col5  7   16 row2
+# col3  8   15 col1
+# col2  9   14 col6
+# row3 10   13 row3r
+# row4 11   12 row4r
+
+class KMKKeyboard(_KMKKeyboard):
+    col_pins = (pins[15], pins[9], pins[8], pins[6], pins[7], pins[14])
+    row_pins = (pins[17], pins[16], pins[10], pins[11], pins[19], pins[18], pins[13], pins[12])
+    diode_orientation = DiodeOrientation.COL2ROW
+
+    coord_mapping = [
+     0,  1,  2,  3,  4,  5,    29, 28, 27, 26, 25, 24,
+     6,  7,  8,  9, 10, 11,    35, 34, 33, 32, 31, 30,
+    12, 13, 14, 15, 16, 17,    41, 40, 39, 38, 37, 36,
+                    23, 22,    46, 47,
+            18, 19, 20, 21,    45, 44, 43, 42,
+    ]
+#+end_src
+
+
 #+name: btrfly.py
 #+begin_src python :tangle output/btrfly.py
 import board
@@ -1129,9 +1164,6 @@ class KMKKeyboard(_KMKKeyboard):
 #+end_src
 
 #+RESULTS: btrfly.py
-
-#+RESULTS: crkbd.py
-
 
 #+name: crkbd.py
 #+begin_src python :tangle output/crkbd.py
