@@ -586,55 +586,55 @@ SFT   z    x    c    v    b        k    m    ,    .    /    ◌
 #+name: kyria_20221226
 #+begin_example
 TAB   q    w    e    r    t        y    u    i    o    p    BS 
-CTL   a    s    d    f    g        h    j    k    l    :;   RET       M0
+CTL   a    s    d    f    g        h    j    k    l    :;   RET       
  ◌    z    x    c    v    b        n    m    ,    .    /    ◌         
-                     ◌    ◌        ◌    ◌
-          OPT  CMD  M1   M3       SFT   ␣   M2    ◌
+                     1    2        3    4
+          OPT  CMD  M1   M3       SFT   ␣   M2    5
 
  ~    !    @    #    $    %        ^    7    8    9    ◌    ◌
- ◌    "    &    *    _    ◌        +    4    5    6    '    |         M1
+ ◌    "    &    *    _    ◌        +    4    5    6    '    |         
  ◌    ◌    ◌    ◌    ◌    .        0    1    2    3    /    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD   ◉    ◌        ◌    ␣   M5    ◌
 
  `    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    BS
- ◌    [    ]    (    )    ◌        ◌    -    =    ◌    ◌    \         M2
+ ◌    [    ]    (    )    ◌        ◌    -    =    ◌    ◌    \         
  ◌    <    >    {    }    ◌        ◌    ◌    ◌    ◌    ◌    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD  M4    ◌        ◌    ◌    ◉    ◌
 
 ESC  λ←   λ→   ¶←   ¶→    ◌        ◌   P↑    ↑   P↓    ◌    ◌
- ◌   S←   S→   W←   W→   BEG       ◌    ←    ↓    →   CYC   ◌         M3
+ ◌   S←   S→   W←   W→   BEG       ◌    ←    ↓    →   CYC   ◌         
  ◌   ⌃z   ⌃x   ⌃c   ⌃v    ◌        ◌   HME   ◌   END   ◌    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD  M1    ◉        ◌    ◌    ◌    ◌
 
  ◌    F1   F2   F3   F4   F5       F6   F7   F8   F9   F10  ◌
- ◌    ∫C   ∫D   ∫S   ∫E   ∫P       Bu0  Bu1  Bu2  Bu3  Bu4  ◌         M4
+ ◌    ∫C   ∫D   ∫S   ∫E   ∫P       Bu0  Bu1  Bu2  Bu3  Bu4  ◌         
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD   ◉   M6!       ◌    ◉    ◌    ◌
 
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
- ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌         M5
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌         
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌
 
 QWE   ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
-COL  BT4  BT3  BT2  BT1  BTC       ◌    ◌    ◌    ◌    ◌    ◌         M6
+COL  BT4  BT3  BT2  BT1  BTC       ◌    ◌    ◌    ◌    ◌    ◌         
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌
 
 TAB   q    w    f    p    g        j    l    u    y    :;   BS
-CTL   a    r    s    t    d        h    n    e    i    o    RET       M7
+CTL   a    r    s    t    d        h    n    e    i    o    RET       
 SFT   z    x    c    v    b        k    m    ,    .    /    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD   M1   M3       ␣   M2    ◌    ◌
 
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
- ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌         M8
+ ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌         
  ◌    ◌    ◌    ◌    ◌    ◌        ◌    ◌    ◌    ◌    ◌    ◌
                      ◌    ◌        ◌    ◌
           OPT  CMD   ◌    ◌        ◌    ◌    ◌    ◌
@@ -1022,9 +1022,21 @@ layer = lambda l: [key(k) for k in l.split()]
 
 def tangle(i, layer):
     s = ['[', f'# Layer {i}']
+    
     ROWLEN = 12
-    for row in chunk(layer, ROWLEN):
-        s.append(', '.join(row) + ',')
+    for j, row in enumerate(chunk(layer, ROWLEN)):
+        row = list(row)
+        if False:
+            #if j == 3:
+            #s.append(f'POOP: {row}')
+            #POOP: ['KC.NO', 'KC.N1', 'KC.N2', 'KC.N3', 'KC.N4', 'KC.LOPT', 'KC.LCMD', 'KC.MO(1)', 'KC.MO(3)', 'KC.LSFT', 'KC.SPC', 'KC.MO(2)']
+            row[0], row[1] = row[1], row[0]
+            s.append(', '.join(row) + ',')
+        else:
+            s.append(', '.join(row) + ',')
+        
+
+        
     s.append('],')
     return '\n'.join(s)
 
@@ -1037,64 +1049,64 @@ return '\n'.join([tangle(i, layer(l)) for i, l in enumerate(src.split('\n\n'))])
 # Layer 0
 KC.TAB, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.BSPC,
 KC.LCTL, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, COLON_SEMI, KC.ENT,
-KC.MO(0), KC.NO, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.LSFT, KC.SPC, KC.MO(2),
+KC.NO, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
+KC.N1, KC.N2, KC.N3, KC.N4, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.LSFT, KC.SPC, KC.MO(2), KC.N5,
 ],
 [
 # Layer 1
 KC.TILDE, KC.EXLM, KC.AT, KC.HASH, KC.DLR, KC.PERC, KC.CIRC, KC.N7, KC.N8, KC.N9, KC.NO, KC.NO,
 KC.NO, KC.DQUO, KC.AMPR, KC.PAST, KC.UNDS, KC.NO, KC.PLUS, KC.N4, KC.N5, KC.N6, KC.QUOT, KC.PIPE,
-KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.SPC, KC.MO(5),
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.DOT, KC.N0, KC.N1, KC.N2, KC.N3, KC.SLASH, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.SPC, KC.MO(5), KC.NO,
 ],
 [
 # Layer 2
 KC.GRV, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.BSPC,
 KC.NO, KC.LBRC, KC.RBRC, KC.LPRN, KC.RPRN, KC.NO, KC.NO, KC.MINUS, KC.EQL, KC.NO, KC.NO, KC.BSLS,
-KC.MO(2), KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LABK, KC.RABK, KC.LCBR, KC.RCBR, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 3
 KC.ESC, KC.LCTL(KC.LCMD(KC.B)), KC.LCTL(KC.LCMD(KC.F)), KC.LCMD(KC.LCBR), KC.LCMD(KC.RCBR), KC.NO, KC.NO, KC.PGUP, KC.UP, KC.PGDN, KC.NO, KC.NO,
 KC.NO, KC.LCMD(KC.A), KC.LCMD(KC.E), KC.LCMD(KC.B), KC.LCMD(KC.F), KC.LCMD(KC.M), KC.NO, KC.LEFT, KC.DOWN, KC.RIGHT, CYC, KC.NO,
-KC.MO(3), KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.LCMD(KC.Z), KC.LCMD(KC.X), KC.LCMD(KC.C), KC.LCMD(KC.V), KC.NO, KC.NO, KC.HOME, KC.NO, KC.END, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 4
 KC.NO, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, KC.NO,
 KC.NO, KC.MEH(KC.C), KC.MEH(KC.D), KC.MEH(KC.S), KC.MEH(KC.E), KC.MEH(KC.P), Bu0, Bu1, Bu2, Bu3, Bu4, KC.NO,
-KC.MO(4), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.ONESHOT(KC.MO(6),tap_time=10000), KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 5
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.MO(5), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 6
 KC.DF(1), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 KC.DF(7), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.MO(6), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 [
 # Layer 7
 KC.TAB, KC.Q, KC.W, KC.F, KC.P, KC.G, KC.J, KC.L, KC.U, KC.Y, COLON_SEMI, KC.BSPC,
 KC.LCTL, KC.A, KC.R, KC.S, KC.T, KC.D, KC.H, KC.N, KC.E, KC.I, KC.O, KC.ENT,
-KC.MO(7), KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO,
+KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.K, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.MO(1), KC.MO(3), KC.SPC, KC.MO(2), KC.NO, KC.NO,
 ],
 [
 # Layer 8
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.MO(8), KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
-KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
+KC.NO, KC.NO, KC.NO, KC.NO, KC.LOPT, KC.LCMD, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO,
 ],
 #+end_example
 
@@ -1142,8 +1154,7 @@ class KMKKeyboard(_KMKKeyboard):
      0,  1,  2,  3,  4,  5,    29, 28, 27, 26, 25, 24,
      6,  7,  8,  9, 10, 11,    35, 34, 33, 32, 31, 30,
     12, 13, 14, 15, 16, 17,    41, 40, 39, 38, 37, 36,
-                    23, 22,    46, 47,
-            18, 19, 20, 21,    45, 44, 43, 42,
+    23, 22, 46, 47, 18, 19,    20, 21, 45, 44, 43, 42,                        
     ]
 #+end_src
 
@@ -1301,7 +1312,7 @@ for l in layers_in:
 p = subprocess.run(['/Users/guido/miniforge3/bin/discotool', 'json'], capture_output=True)
 devs = json.loads(p.stdout)
 vol = lambda d: {v['name'] for v in d['volumes']}
-path = [d['ports'][0]['dev'] for d in devs if 'KEEB-1' in vol(d)][0]
+path = [d['ports'][0]['dev'] for d in devs if 'KEEB-3' in vol(d)][0]
 ser = serial.Serial(path)
 
 con = rich.console.Console()
